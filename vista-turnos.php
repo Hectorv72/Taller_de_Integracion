@@ -1,5 +1,5 @@
 <!--header-->
-<?php include($absolute_include."templates/page/header.php") ?>
+<?php include("templates/page/header.html") ?>
 
 <body>
 
@@ -9,26 +9,25 @@
 
             
             <!--Navbar-->
-            <?php include($absolute_include."templates/page/navbar.php") ?>
+            <?php include("templates/page/navbar.html") ?>
 
             <!--Sidebar-->
-            <?php include($absolute_include."templates/page/sidebar.php") ?>
-
+            <?php include("templates/page/sidebar.html") ?>
 
 			<div class="main-panel">
 				<div class="content">
 					<div class="container-fluid">
-						<h4 class="page-title">Big tittle</h4>
+						<h4 class="page-title">TURNOS</h4>
 						<div class="row">
 							<div class="col-md-12">
 								<div class="card">
-									<div class="card-header">
+									<!-- <div class="card-header">
 										<div class="card-title">Card Tittle</div>
-									</div>
+									</div> -->
 
 
 									<div class="card-body">
-                                        Card body
+                                        TURNO 1
 									</div>
 
 
@@ -60,8 +59,9 @@
 			</div>
 		</div>
 	</div>
+
     
 </body>
 
 <!--end-->
-<?php include($absolute_include."templates/page/end.php") ?>
+<?php include("templates/page/end.html") ?>

@@ -2,7 +2,7 @@
     <div class="scrollbar-inner sidebar-wrapper">
         <div class="user">
             <div class="photo">
-                <img src="design/assets/img/profile.jpg">
+                <img src="<?php echo $absolute_include ?>design/assets/img/profile.jpg">
             </div>
             <div class="info">
                 <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
@@ -43,14 +43,14 @@
         <ul class="nav">
 
             <li class="nav-item">
-                <a href="">
+                <a href="<?php $absolute_include ?>controller.empleado.php?action=home">
                     <i class="la la-home"></i>
                     <p>Menu</p>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="">
+                <a href="<?php $absolute_include ?>controller.empleado.php?action=atencion">
                     <i class="la la-male"></i>
                     <p>Atencion al cliente</p>
                     <span class="badge badge-count badge-success">5</span>

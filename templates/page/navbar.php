@@ -23,7 +23,7 @@
 		</form> -->
 
 
-		<ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+		<ul class="navbar-nav topbar-nav ml-md-auto align-items-center row">
 			<!-- <li class="nav-item dropdown hidden-caret">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="la la-envelope"></i>
@@ -39,12 +39,17 @@
 			<!-- <li class="nav-item">
 				<input type="checkbox" data-toggle="toggle" data-onstyle="dark" data-offstyle="light" data-style="btn-round" data-on="primary">
 			</li> -->
+			<li class="nav-item col-md-8 align-items-center">
+				<div class="text-center">
+					14:30
+				</div>
+			</li>
 
-			<li class="nav-item dropdown hidden-caret">
+			<li class="nav-item dropdown hidden-caret col-md-2 align-items-center">
 				
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<!-- <i class="la la-bell"></i> -->
-					<div class="profile-pic" > <img src="design/assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"></div>
+					<div class="profile-pic" > <img src="<?php echo $absolute_include ?>design/assets/img/profile.jpg" alt="user-img" width="36" class="img-circle"></div>
 					<!-- <span class="notification">3</span> -->
 				</a>
 				
@@ -102,11 +107,6 @@
 
 
 			<!-- topbar-nav ml-md-auto align-items-center-->
-			<li class="nav-item">
-				<!-- <div class="h5"> -->
-					14:30
-				<!-- </div> -->
-			</li>
 
 
 			</ul>

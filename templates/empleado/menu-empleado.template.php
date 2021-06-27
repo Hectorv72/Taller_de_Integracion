@@ -1,5 +1,5 @@
 <!--header-->
-<?php include("templates/page/header.html") ?>
+<?php include($absolute_include."templates/page/header.php") ?>
 
 <body>
 
@@ -9,10 +9,11 @@
 
             
             <!--Navbar-->
-            <?php include("templates/page/navbar.html") ?>
+            <?php include($absolute_include."templates/page/navbar.php") ?>
 
             <!--Sidebar-->
-            <?php include("templates/page/sidebar.html") ?>
+            <?php include($absolute_include."templates/page/sidebar.php") ?>
+
 
 			<div class="main-panel">
 				<div class="content">
@@ -23,14 +24,13 @@
 
 
 				<!--footer-->
-                <?php include("templates/page/footer.html"); ?>
+                <?php include($absolute_include."templates/page/footer.php"); ?>
                 
 			</div>
 		</div>
 	</div>
-
     
 </body>
 
 <!--end-->
-<?php include("templates/page/end.html") ?>
+<?php include($absolute_include."templates/page/end.php") ?>
