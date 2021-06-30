@@ -29,6 +29,8 @@
         pageHome();
     }else if($action == "atencion"){
         pageListData($_POST);
+    }else if($action == "turnos"){
+        pageTurnos();
     }
 
 
@@ -44,6 +46,13 @@
         $carpeta_trabajo  = $GLOBALS['carpeta_trabajo'];
         
         include($absolute_include."templates/empleado/atencion-empleado.template.php");
+    }
+
+    function pageTurnos(){
+        $absolute_include = $GLOBALS['absolute_include'];
+        $carpeta_trabajo  = $GLOBALS['carpeta_trabajo'];
+
+        include($absolute_include."templates/cliente/vista-turnos.template.php");
     }
 
 ?>

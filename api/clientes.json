@@ -1,0 +1,22 @@
+{
+    "clientes":[
+        {
+            "id":"1",
+            "turno":"1",
+            "nombre":"Hector Valdez",
+            "categoria":"Cambio de pin"
+        },
+        {
+            "id":"2",
+            "turno":"2",
+            "nombre":"Gomez Lopez",
+            "categoria":"Problemas de la tarjeta"
+        },
+        {
+            "id":"3",
+            "turno":"4",
+            "nombre":"Perez Diaz",
+            "categoria":"Problemas de la tarjeta"
+        }
+    ]
+}

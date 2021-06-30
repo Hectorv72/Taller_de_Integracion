@@ -53,7 +53,15 @@
                 <a href="<?php $absolute_include ?>controller.empleado.php?action=atencion">
                     <i class="la la-male"></i>
                     <p>Atencion al cliente</p>
-                    <span class="badge badge-count badge-success">5</span>
+                    <span class="badge badge-count badge-success">3</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="<?php $absolute_include ?>controller.empleado.php?action=turnos">
+                    <i class="la la-list"></i>
+                    <p>Vista de turnos</p>
+                    <!-- <span class="badge badge-count badge-success">5</span> -->
                 </a>
             </li>
             <!-- <li class="nav-item">

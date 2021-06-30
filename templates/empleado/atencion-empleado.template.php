@@ -23,7 +23,7 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<div class="card-title">Lista de clientes (fecha)</div>
+										<div class="card-title">Lista de clientes (fecha) - CAJA 1</div>
 									</div>
 
 
@@ -41,33 +41,17 @@
                                         </form>
 
 
-                                        <table class="table table-hover">
+                                        <table id="tabla-clientes" class="table table-hover">
                                             <thead>
                                                 <tr>
                                                     <td>Turno</td>
-                                                    <td>dni</td>
-                                                    <td>Usuario</td>
+                                                    <td>Nombre</td>
                                                     <td>Categoria</td>
                                                     <td>Acciones</td>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>45</td>
-                                                    <td>44556677</td>
-                                                    <td>Hector Valdez</td>
-                                                    <td>Cambio de pin</td>
-                                                    <!-- <td> <span class="badge badge-primary">Fixed</span> </td> -->
-                                                    <td>
-                                                        <div class="row">
-                                                        <div class="col-md-12">
-                                                            <button type="button" class="btn btn-outline-primary btn-rounded">Atendido</button>
-                                                            <button type="button" class="btn btn-outline-danger btn-rounded">Ausente</button>
-                                                        </div>
-                                                        
-                                                        </div>
-                                                    </td>
-                                                </tr>
+                                                
                                             </tbody>
 
                                         </table>
@@ -95,7 +79,6 @@
 					</div>
 				</div>
 
-
 				<!--footer-->
                 <?php include($absolute_include."templates/page/footer.php"); ?>
                 
@@ -104,6 +87,7 @@
 	</div>
     
 </body>
+<script src="../../script.js"></script>
 
 <!--end-->
 <?php include($absolute_include."templates/page/end.php") ?>
