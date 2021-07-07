@@ -43,14 +43,14 @@
         <ul class="nav">
 
             <li class="nav-item">
-                <a href="<?php $absolute_include ?>controller.empleado.php?action=home">
+                <a href="<?php echo $absolute_include ?>home">
                     <i class="la la-home"></i>
                     <p>Menu</p>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="<?php $absolute_include ?>controller.empleado.php?action=atencion">
+                <a href="<?php echo $absolute_include ?>atencion">
                     <i class="la la-male"></i>
                     <p>Atencion al cliente</p>
                     <span class="badge badge-count badge-success">3</span>
@@ -58,7 +58,7 @@
             </li>
 
             <li class="nav-item">
-                <a href="<?php $absolute_include ?>controller.empleado.php?action=turnos">
+                <a href="<?php echo $absolute_include ?>turnos">
                     <i class="la la-list"></i>
                     <p>Vista de turnos</p>
                     <!-- <span class="badge badge-count badge-success">5</span> -->

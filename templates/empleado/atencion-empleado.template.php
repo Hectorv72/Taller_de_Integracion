@@ -45,8 +45,8 @@
                                             <thead>
                                                 <tr>
                                                     <td>Turno</td>
-                                                    <td>Nombre</td>
-                                                    <td>Categoria</td>
+													<td>Categoria</td>
+                                                    <td>Descripcion</td>
                                                     <td>Acciones</td>
                                                 </tr>
                                             </thead>
@@ -87,7 +87,7 @@
 	</div>
     
 </body>
-<script src="../../script.js"></script>
+<script src="../../resources/js/listar_clientes.js"></script>
 
 <!--end-->
 <?php include($absolute_include."templates/page/end.php") ?>

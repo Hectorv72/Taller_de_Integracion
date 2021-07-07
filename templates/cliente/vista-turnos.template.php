@@ -30,38 +30,7 @@
 									<div class="card-body">
 
                                         <div id="secciones">
-                                            <div id="seccion 1">
-                                                
-                                                <strong>Caja 1</strong>
-												<h5>Turno: 5</h5>
-                                            </div>
-                                        </div>
-										<br>
 
-										<div id="secciones">
-                                            <div id="seccion 2">
-                                                
-                                                <strong>Caja 2</strong>
-												<h5>Turno: 24</h5>
-                                            </div>
-                                        </div>
-										<br>
-
-										<div id="secciones">
-                                            <div id="seccion 3">
-                                                
-                                                <strong>Caja 3</strong>
-												<h5>Turno: 45</h5>
-                                            </div>
-                                        </div>
-										<br>
-
-										<div id="secciones">
-                                            <div id="seccion 4">
-                                                
-                                                <strong>Caja 4</strong>
-												<h5>Turno: 90</h5>
-                                            </div>
                                         </div>
 									</div>
 
@@ -95,7 +64,7 @@
 	</div>
     
 </body>
-<script src="../../script.js"></script>
+<script src="../../resources/js/listar_turnos.js"></script>
 
 <!--end-->
 <?php include($absolute_include."templates/page/end.php") ?>

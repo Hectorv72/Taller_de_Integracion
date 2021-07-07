@@ -2,7 +2,7 @@ let tablaClientes = document.querySelector("#tabla-clientes > tbody");
 
 let datalist = [];
 
-fetch("../../api/clientes.json").then((response)=> response.json()).then(
+fetch("../../api/clientes").then((response)=> response.json()).then(
     (json) => {
         datalist = json.clientes;
         listarClientes();
@@ -26,10 +26,11 @@ function listarClientes(){
 
     if (datalist.length > 0){
         datalist.forEach(element => {
+
             list += `<tr>
             <td>${element.turno}</td>
-            <td>${element.nombre}</td>
-            <td>${element.categoria}</td>`;
+            <td>${element.categoria}</td>
+            <td>${element.descripcion}</td>`;
     
             if(primero == false){
                 list += `<td>

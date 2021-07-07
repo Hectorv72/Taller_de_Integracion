@@ -19,17 +19,17 @@
     // fin seccion
 
 
-    $action = "";
+    $page = "";
 
-    if (isset($_REQUEST['action'])){
-        $action = $_REQUEST['action'];
+    if (isset($_REQUEST['page'])){
+        $page = $_REQUEST['page'];
     }
 
-    if($action == "" or $action == "home"){
+    if($page == "" or $page == "home"){
         pageHome();
-    }else if($action == "atencion"){
+    }else if($page == "atencion"){
         pageListData($_POST);
-    }else if($action == "turnos"){
+    }else if($page == "turnos"){
         pageTurnos();
     }
 
@@ -39,6 +39,7 @@
         $carpeta_trabajo  = $GLOBALS['carpeta_trabajo'];
         
         include($absolute_include."templates/empleado/menu-empleado.template.php");
+        //print_r($_SERVER['REQUEST_URI']);
     }
 
     function pageListData($post){
