@@ -64,7 +64,7 @@
 	</div>
     
 </body>
-<script src="../../resources/js/listar_turnos.js"></script>
+<script src="<?php echo $absolute_include ?>resources/js/listar_turnos.js"></script>
 
 <!--end-->
 <?php include($absolute_include."templates/page/end.php") ?>

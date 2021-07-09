@@ -193,7 +193,7 @@
 			}
 
 			if($condition != null){
-				$sql = $sql." WHERE $condition";
+				$sql = $sql." $condition ";
 			}
 
 
@@ -207,7 +207,7 @@
 				print $e->getMessage();
 			}
 			//$id = $this->db_conexion->lastinsertid();
-			print_r($this->conexion);
+			//print_r($this->conexion);
 
 			$this->cerrar_conexion();
 
@@ -226,7 +226,7 @@
 			$sql = "DELETE FROM `$table` ";
 
 			if($condition != null){
-				$sql = $sql." WHERE $condition";
+				$sql = $sql." $condition ";
 			}
 
 			try{

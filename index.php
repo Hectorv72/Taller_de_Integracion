@@ -8,6 +8,6 @@
 		include("controladores/empleado/controller.empleado.php");
 	}
 	else if($page_direction) */
-	header("Location: controladores/empleado/controller.empleado.php");
+	header("Location: empleado/home");
 ?>
 

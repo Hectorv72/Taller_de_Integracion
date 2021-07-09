@@ -23,38 +23,16 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<div class="card-title">Lista de clientes (fecha) - CAJA 1</div>
+										<div id="dato-turno" class="card-title h5"></div>
 									</div>
 
 
 									<div class="card-body">
 
-                                        <form class="navbar-left navbar-form nav-search mr-md-3" action="">
-                                            <div class="input-group">
-                                                <input type="text" placeholder="Buscar usuario" class="form-control">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">
-                                                        <i class="la la-search search-icon"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </form>
+                                        
+										<div id="datos-atencion">
 
-
-                                        <table id="tabla-clientes" class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <td>Turno</td>
-													<td>Categoria</td>
-                                                    <td>Descripcion</td>
-                                                    <td>Acciones</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                
-                                            </tbody>
-
-                                        </table>
+										</div>
 									</div>
 
 
@@ -87,7 +65,7 @@
 	</div>
     
 </body>
-<script src="../../resources/js/listar_clientes.js"></script>
+<script src="../resources/js/datos_cliente.js"></script>
 
 <!--end-->
 <?php include($absolute_include."templates/page/end.php") ?>

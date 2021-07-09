@@ -11,6 +11,7 @@
 <script src="<?php echo $absolute_include ?>design/assets/js/plugin/chart-circle/circles.min.js"></script>
 <script src="<?php echo $absolute_include ?>design/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 <script src="<?php echo $absolute_include ?>design/assets/js/ready.min.js"></script>
+<script src="<?php echo $absolute_include ?>resources/js/header-horario.js"></script>
 <script>
 	$('#displayNotif').on('click', function(){
 		var placementFrom = $('#notify_placement_from option:selected').val();

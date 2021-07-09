@@ -4,4 +4,6 @@ RewriteEngine On
 # Reescribir al index
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.+?)/?$ controladores/empleado/controller.empleado.php?page=$1 [L,QSA]
+RewriteRule ^api/(.+?)/?$ api/api.php?url=$1 [L,QSA]
+RewriteRule ^empleado/(.+?)/?$ controladores/empleado/controller.empleado.php?page=$1 [L,QSA]
+RewriteRule ^cliente/(.+?)/?$  controladores/cliente/controller.cliente.php?page=$1 [L,QSA]

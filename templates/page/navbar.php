@@ -41,7 +41,7 @@
 			</li> -->
 			<li class="nav-item col-md-8 align-items-center">
 				<div class="text-center">
-					14:30
+					<div id="header-horario">14:30</div>
 				</div>
 			</li>
 
