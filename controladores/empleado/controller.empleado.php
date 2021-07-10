@@ -1,4 +1,22 @@
 <?php
+    session_start();
+
+    $session_nombre   = "UNNAMED";
+    $session_nro_caja = 0;
+    $_SESSION['idempleado'] = 1;
+
+
+
+    if (isset($_SESSION['nombre'])){
+        $session_nombre = $_SESSION['nombre'];
+    }
+
+    if (isset($_SESSION['nro_caja'])){
+        $session_nro_caja = $_SESSION['nro_caja'];
+    }
+
+
+
     // seccion que permite resolver problemas de inclusion de archivos
     $carpeta_trabajo="";
     $seccion_trabajo="/controladores";

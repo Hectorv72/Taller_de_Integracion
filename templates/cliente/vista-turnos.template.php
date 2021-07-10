@@ -12,7 +12,7 @@
             <?php include($absolute_include."templates/page/navbar.php") ?>
 
             <!--Sidebar-->
-            <?php include($absolute_include."templates/page/sidebar.php") ?>
+            <?php include($absolute_include."templates/page/sidebar-cliente.php") ?>
 
 
 			<div class="main-panel">

@@ -12,28 +12,26 @@
             <?php include($absolute_include."templates/page/navbar.php") ?>
 
             <!--Sidebar-->
-            <?php include($absolute_include."templates/page/sidebar.php") ?>
+            <?php include($absolute_include."templates/page/sidebar-cliente.php") ?>
 
 
 			<div class="main-panel">
 				<div class="content">
 					<div class="container-fluid">
-						<h4 class="page-title">Atencion al cliente</h4>
+						<h4 class="page-title">Mi turno</h4>
 						<div class="row">
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<div id="dato-turno" class="card-title h5"></div>
+										<div id="datos-consulta-head" class="card-title"></div>
 									</div>
 
 
 									<div class="card-body">
-										<input type="hidden" id="session_nro_caja" value="<?php echo $session_nro_caja ?>">
-
-                                        
-										<div id="datos-atencion">
-
-										</div>
+                                        <input type="hidden" id="usuario-id" value="<?php echo $session_idusuario ?>">
+                                        <div id="datos-consulta-body">
+                                            
+                                        </div>
 									</div>
 
 
@@ -66,7 +64,7 @@
 	</div>
     
 </body>
-<script src="../resources/js/datos_cliente.js"></script>
+<script src="<?php echo $absolute_include ?>resources/js/mostrar-datos-consulta.js"></script>
 
 <!--end-->
 <?php include($absolute_include."templates/page/end.php") ?>

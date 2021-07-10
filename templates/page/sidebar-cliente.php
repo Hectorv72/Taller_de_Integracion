@@ -17,11 +17,6 @@
                 <div class="collapse in" id="collapseExample" aria-expanded="true">
                     <ul class="nav">
                         <li>
-                            <a>
-                                <span class="link-collapse">Horario de salida: 04:00</span>
-                            </a>
-                        </li>
-                        <li>
                             <a href="#edit">
                                 <span class="link-collapse">Editar perfil</span>
                             </a>
@@ -43,28 +38,35 @@
         <ul class="nav">
 
             <li class="nav-item">
-                <a href="<?php echo $absolute_include ?>empleado/home">
+                <a href="<?php echo $absolute_include ?>cliente/home">
                     <i class="la la-home"></i>
                     <p>Menu</p>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="<?php echo $absolute_include ?>empleado/atencion">
+                <a href="<?php echo $absolute_include ?>cliente/turno">
                     <i class="la la-male"></i>
-                    <p>Atencion al cliente</p>
+                    <p>Turno</p>
                     <!-- <span class="badge badge-count badge-success">3</span> -->
                 </a>
             </li>
 
             <li class="nav-item">
-                <a href="<?php echo $absolute_include ?>empleado/lista">
+                <a href="<?php echo $absolute_include ?>cliente/vista-turnos">
                     <i class="la la-male"></i>
-                    <p>Lista de turnos hoy</p>
+                    <p>Vista de turnos</p>
                     <!-- <span class="badge badge-count badge-success">3</span> -->
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a href="<?php echo $absolute_include ?>cliente/tarjeta">
+                    <i class="la la-list"></i>
+                    <p>Mi tarjeta</p>
+                    <!-- <span class="badge badge-count badge-success">5</span> -->
+                </a>
+            </li>
             <!-- <li class="nav-item">
                 <a href="components.html">
                     <i class="la la-table"></i>

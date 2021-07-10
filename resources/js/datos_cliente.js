@@ -1,10 +1,26 @@
-let divAtencion = document.getElementById('datos-atencion');
-let divHead     = document.getElementById('dato-turno');
+let divAtencion   = document.getElementById('datos-atencion');
+let divHead       = document.getElementById('dato-turno');
+const ss_nro_caja = document.getElementById('session_nro_caja').value;
+let intrvBusqueda = "";
 
 let global_nroCaja = 0;
 
-function setEstado(id,estado){
-    console.log(id+" "+estado);
+async function setEstado(id,estado,nroturno){
+    
+    const response = await fetch("../api/estado-consulta",{
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify({id : id, estado : estado, nroturno : nroturno})
+    });
+    const json     = await response.json();
+
+    if (json.state == "correcto"){
+        obtenerTurnoLibre();
+    }
+
 }
 
 
@@ -35,10 +51,19 @@ async function obtenerTurnoLibre(){
         </div>
         `;
     
-        document.getElementById("button-atendido").addEventListener("click",function(){setEstado(consulta.id,"atendido")},false);
-        document.getElementById("button-ausente").addEventListener("click",function(){setEstado(consulta.id,"ausente")},false);
+        document.getElementById("button-atendido").addEventListener("click",function(){setEstado(consulta.id,"atendido",consulta.turno)},false);
+        document.getElementById("button-ausente").addEventListener("click",function(){setEstado(consulta.id,"ausente",consulta.turno)},false);
+
+        clearInterval(intrvBusqueda);
+        intrvBusqueda = "";
     }else{
         divHead.innerHTML = `${json.content.message}`;
+        divAtencion.innerHTML = "";
+        
+        if(intrvBusqueda == ""){
+            intrvBusqueda = setInterval(obtenerTurnoLibre, 5000);
+        }
+        
     }
     
     
@@ -70,6 +95,7 @@ async function obtenerCajas(){
         },false);
     }else{
         divHead.innerHTML = "No hay cajas disponibles";
+        divAtencion.innerHTML = "";
     }
     
 }
@@ -94,6 +120,11 @@ async function setCaja(){
     console.log(json);
 }
 
-obtenerCajas();
+if(ss_nro_caja == 0){
+    obtenerCajas();
+}else{
+    obtenerTurnoLibre();
+}
+
 //obtenerTurnoLibre();
 //console.log("b");

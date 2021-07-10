@@ -12,18 +12,17 @@
             <?php include($absolute_include."templates/page/navbar.php") ?>
 
             <!--Sidebar-->
-            <?php include($absolute_include."templates/page/sidebar.php") ?>
+            <?php include($absolute_include."templates/page/sidebar-cliente.php") ?>
 
 
 			<div class="main-panel">
 				<div class="content">
 					<div class="container-fluid">
-						<h4 class="page-title">BIENVENIDO (<?php echo $session_nombre; ?>)</h4>
+					<h4 class="page-title">BIENVENIDO (<?php echo $session_nombre; ?>)</h4>
 						<div class="card">
-							<div class="card-body">
-
-							</div>
+							<div class="card-body">a</div>
 						</div>
+					
 					</div>
 				</div>
 
