@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-07-2021 a las 21:13:13
+-- Tiempo de generación: 11-07-2021 a las 17:38:07
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -31,8 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `atenciones` (
   `id_atencion` int(5) NOT NULL,
   `fecha` date NOT NULL,
-  `id_empleado` int(5) NOT NULL,
-  `id_caja` int(5) NOT NULL
+  `id_empleado` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -52,9 +51,8 @@ CREATE TABLE `cajas` (
 --
 
 INSERT INTO `cajas` (`id_caja`, `nro_turno`, `habilitado`) VALUES
-(1, 5, 1),
-(2, 6, 1),
-(3, 0, 1);
+(1, 0, 1),
+(2, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -65,21 +63,12 @@ INSERT INTO `cajas` (`id_caja`, `nro_turno`, `habilitado`) VALUES
 CREATE TABLE `consultas` (
   `id_consulta` int(11) NOT NULL,
   `id_usuario` int(5) DEFAULT NULL,
-  `id_tipo_consulta` int(5) NOT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
   `fecha` date NOT NULL,
   `hora` varchar(5) NOT NULL,
   `nro_turno` int(5) NOT NULL,
   `estado` int(1) NOT NULL COMMENT '0: libre / 1: en atencion'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `consultas`
---
-
-INSERT INTO `consultas` (`id_consulta`, `id_usuario`, `id_tipo_consulta`, `descripcion`, `fecha`, `hora`, `nro_turno`, `estado`) VALUES
-(1, NULL, 1, NULL, '2021-07-05', '15:00', 7, 0),
-(2, 4, 2, 'Pin de tarjeta', '2021-07-09', '12:32', 6, 0);
 
 -- --------------------------------------------------------
 
@@ -106,16 +95,12 @@ CREATE TABLE `empleados` (
   `horario_salida` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `tipos_consulta`
+-- Volcado de datos para la tabla `empleados`
 --
 
-CREATE TABLE `tipos_consulta` (
-  `id_tipo_consulta` int(5) NOT NULL,
-  `caracteristica` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `empleados` (`id_empleado`, `id_usuario`, `horario_salida`) VALUES
+(2, 3, '12:00');
 
 -- --------------------------------------------------------
 
@@ -127,8 +112,16 @@ CREATE TABLE `usuarios` (
   `id_usuario` int(5) NOT NULL,
   `apellido_y_nombre` varchar(60) NOT NULL,
   `nombre_usuario` varchar(30) NOT NULL,
-  `contraseña` varchar(60) NOT NULL
+  `usu_password` varchar(60) NOT NULL,
+  `email` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `apellido_y_nombre`, `nombre_usuario`, `usu_password`, `email`) VALUES
+(3, 'Hector Valdez', 'Hect123', '123456', 'Hectorvaldez@gmail.com');
 
 --
 -- Índices para tablas volcadas
@@ -138,7 +131,8 @@ CREATE TABLE `usuarios` (
 -- Indices de la tabla `atenciones`
 --
 ALTER TABLE `atenciones`
-  ADD PRIMARY KEY (`id_atencion`);
+  ADD PRIMARY KEY (`id_atencion`),
+  ADD KEY `empleado` (`id_empleado`) USING BTREE;
 
 --
 -- Indices de la tabla `cajas`
@@ -150,25 +144,22 @@ ALTER TABLE `cajas`
 -- Indices de la tabla `consultas`
 --
 ALTER TABLE `consultas`
-  ADD PRIMARY KEY (`id_consulta`);
+  ADD PRIMARY KEY (`id_consulta`),
+  ADD KEY `user` (`id_usuario`);
 
 --
 -- Indices de la tabla `detalle_atencion`
 --
 ALTER TABLE `detalle_atencion`
-  ADD PRIMARY KEY (`id_detalle_atencion`);
+  ADD PRIMARY KEY (`id_detalle_atencion`),
+  ADD KEY `atencion` (`id_atencion`);
 
 --
 -- Indices de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  ADD PRIMARY KEY (`id_empleado`);
-
---
--- Indices de la tabla `tipos_consulta`
---
-ALTER TABLE `tipos_consulta`
-  ADD PRIMARY KEY (`id_tipo_consulta`);
+  ADD PRIMARY KEY (`id_empleado`),
+  ADD KEY `usuario` (`id_usuario`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -184,43 +175,65 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `atenciones`
 --
 ALTER TABLE `atenciones`
-  MODIFY `id_atencion` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_atencion` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `cajas`
 --
 ALTER TABLE `cajas`
-  MODIFY `id_caja` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_caja` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `consultas`
 --
 ALTER TABLE `consultas`
-  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_atencion`
 --
 ALTER TABLE `detalle_atencion`
-  MODIFY `id_detalle_atencion` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_detalle_atencion` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  MODIFY `id_empleado` int(5) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `tipos_consulta`
---
-ALTER TABLE `tipos_consulta`
-  MODIFY `id_tipo_consulta` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_empleado` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `atenciones`
+--
+ALTER TABLE `atenciones`
+  ADD CONSTRAINT `fkempleado` FOREIGN KEY (`id_empleado`) REFERENCES `empleados` (`id_empleado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `consultas`
+--
+ALTER TABLE `consultas`
+  ADD CONSTRAINT `fkusuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `detalle_atencion`
+--
+ALTER TABLE `detalle_atencion`
+  ADD CONSTRAINT `fkatencion` FOREIGN KEY (`id_atencion`) REFERENCES `atenciones` (`id_atencion`);
+
+--
+-- Filtros para la tabla `empleados`
+--
+ALTER TABLE `empleados`
+  ADD CONSTRAINT `fkiser` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

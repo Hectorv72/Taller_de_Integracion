@@ -7,7 +7,7 @@
             <div class="info">
                 <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                     <span>
-                        <div>Juan Carlos</div>
+                        <div><?php echo $_SESSION['nombre']; ?></div>
                         <span class="user-level text-success">Conectado</span>
                         <span class="caret"></span>
                     </span>
@@ -22,7 +22,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#edit">
+                            <a href="<?php echo $absolute_include ?>logout">
                                 <span class="link-collapse">Cerrar sesion</span>
                             </a>
                         </li>
@@ -47,24 +47,16 @@
             <li class="nav-item">
                 <a href="<?php echo $absolute_include ?>cliente/turno">
                     <i class="la la-male"></i>
-                    <p>Turno</p>
+                    <p>Mi Turno</p>
                     <!-- <span class="badge badge-count badge-success">3</span> -->
                 </a>
             </li>
 
             <li class="nav-item">
                 <a href="<?php echo $absolute_include ?>cliente/vista-turnos">
-                    <i class="la la-male"></i>
+                    <i class="la la-calendar-check-o"></i>
                     <p>Vista de turnos</p>
                     <!-- <span class="badge badge-count badge-success">3</span> -->
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a href="<?php echo $absolute_include ?>cliente/tarjeta">
-                    <i class="la la-list"></i>
-                    <p>Mi tarjeta</p>
-                    <!-- <span class="badge badge-count badge-success">5</span> -->
                 </a>
             </li>
             <!-- <li class="nav-item">

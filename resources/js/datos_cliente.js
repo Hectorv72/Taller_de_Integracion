@@ -2,6 +2,8 @@ let divAtencion   = document.getElementById('datos-atencion');
 let divHead       = document.getElementById('dato-turno');
 const ss_nro_caja = document.getElementById('session_nro_caja').value;
 let intrvBusqueda = "";
+let intrvActualizacion = "";
+//let idconsulta;
 
 let global_nroCaja = 0;
 
@@ -24,6 +26,25 @@ async function setEstado(id,estado,nroturno){
 }
 
 
+async function verificarTurno(idconsulta){
+    const response = await fetch("../api/actualizacion/cliente",{
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+        body: JSON.stringify({idconsulta : idconsulta})
+    });
+    const json = await response.json();
+
+    if(json.actualizacion == true){
+        obtenerTurnoLibre();
+    }
+}
+
+
+
+
 
 
 
@@ -34,6 +55,8 @@ async function obtenerTurnoLibre(){
     if(json.state == "correcto"){
         
         consulta = json.content;
+
+        console.log(consulta);
         
 
         if(consulta.categoria == null){
@@ -43,8 +66,8 @@ async function obtenerTurnoLibre(){
         divHead.innerHTML = `Turno: ${consulta.turno}`;
     
         divAtencion.innerHTML = `
-        <div class="form-group">Categoria: ${consulta.categoria}</div>
         <div class="form-group">Descripcion: ${consulta.descripcion}</div>
+        <div class="form-group">Hora: ${consulta.hora}</div>
         <div class="form-group">
             <button id="button-atendido" class="btn btn-primary">Atendido</button>
             <button id="button-ausente"  class="btn btn-danger">Ausente</button>
@@ -55,7 +78,16 @@ async function obtenerTurnoLibre(){
         document.getElementById("button-ausente").addEventListener("click",function(){setEstado(consulta.id,"ausente",consulta.turno)},false);
 
         clearInterval(intrvBusqueda);
+        clearInterval(intrvActualizacion);
         intrvBusqueda = "";
+        intrvActualizacion = "";
+
+        if(intrvBusqueda == ""){
+            intrvBusqueda = setInterval(function(){
+                verificarTurno(consulta.id);
+            }, 3000);
+        }
+
     }else{
         divHead.innerHTML = `${json.content.message}`;
         divAtencion.innerHTML = "";

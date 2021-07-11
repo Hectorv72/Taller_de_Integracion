@@ -1,15 +1,21 @@
 <?php
     session_start();
 
+    if(!isset($_SESSION['idusuario'])){
+        header("location: pagina-principal");
+    }
+
+    if(isset($_SESSION['idempleado'])){
+        header("location: empleado");
+    }
 
     $session_nombre    = "UNNAMED";
 
-    if(!isset($_SESSION['idusuario'])){
-        $_SESSION['idusuario'] = 1;
-    }
-    
-
     $session_idusuario = $_SESSION['idusuario'];
+
+    if (isset($_SESSION['nombre'])){
+        $session_nombre = $_SESSION['nombre'];
+    }
 
     // seccion que permite resolver problemas de inclusion de archivos
     $carpeta_trabajo="";

@@ -3,9 +3,15 @@
 
     $session_nombre   = "UNNAMED";
     $session_nro_caja = 0;
-    $_SESSION['idempleado'] = 1;
 
+    if(!isset($_SESSION['idusuario'])){
+        header("location: pagina-principal");
+    }
 
+    if(!isset($_SESSION['idempleado'])){
+        header("location: cliente");
+    }
+    
 
     if (isset($_SESSION['nombre'])){
         $session_nombre = $_SESSION['nombre'];

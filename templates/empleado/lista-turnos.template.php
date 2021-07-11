@@ -23,29 +23,17 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<div class="card-title">Lista de clientes (fecha)</div>
+										<div class="card-title">Lista de clientes</div>
 									</div>
 
 
 									<div class="card-body">
-
-                                        <form class="navbar-left navbar-form nav-search mr-md-3" action="">
-                                            <div class="input-group">
-                                                <input type="text" placeholder="Buscar usuario" class="form-control">
-                                                <div class="input-group-append">
-                                                    <span class="input-group-text">
-                                                        <i class="la la-search search-icon"></i>
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </form>
 
 
                                         <table id="tabla-clientes" class="table table-hover">
                                             <thead>
                                                 <tr>
                                                     <td>Turno</td>
-													<td>Categoria</td>
                                                     <td>Descripcion</td>
                                                 </tr>
                                             </thead>

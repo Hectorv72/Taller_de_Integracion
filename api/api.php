@@ -35,17 +35,27 @@
             print_r($api->setCajaLibre($dato));
 
         }
-        else if($url[0] == 'reset-sesion'){
-            $_SESSION['nro_caja'] = 0;
-            unset($_SESSION['ultima_consulta']);
-        }
         else if($url[0] == "detalle-consulta"){
 
             if(count($url) == 2){
                 $iduser = $url[1];
                 print_r($api->getUsuarioConsulta($iduser));
             }
+        
+        }
+        else if($url[0] == "consultas-anteriores"){
+            if(count($url) == 2){
+                print_r($api->getTurnosAnteriores($url[1]));
+            }
+        }
+        else if($url[0] == 'reset-sesion'){
+            $_SESSION['nro_caja'] = 0;
+            unset($_SESSION['ultima_consulta']);
+        }
+        else if($url[0] == "pedir-consulta"){
             
+            $descripcion = "probamndo desde get";
+            print_r($api->pedirTurno($descripcion));
         }
 
     }
@@ -66,8 +76,12 @@
                     $dato = $decode->dato;
                     print_r($api->consultarActualizacionTurnos($dato));
                 }
+                else if($url[1] == 'cliente'){
+                    $id = $decode->idconsulta;
+                    print_r($api->consultarActualizacionCliente($id));
+                }
             }catch(Exception $e){
-                header('location: ../../index.php');
+                print_r("error");
             }
             
         }
@@ -81,6 +95,17 @@
             $dato = $decode->caja;
             
             print_r($api->setCajaLibre($dato));
+        }
+        else if($url[0] == 'cancelar-consulta'){
+            $idcon = $decode->consulta;
+            
+            print_r($api->deleteConsulta($idcon));
+        }
+        else if($url[0] == "pedir-consulta"){
+            
+            $descripcion = $decode->descripcion;
+            
+            print_r($api->pedirTurno($descripcion));
         }
     }
 

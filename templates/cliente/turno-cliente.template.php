@@ -64,6 +64,7 @@
 	</div>
     
 </body>
+<script src="<?php echo $absolute_include ?>resources/sweetalert2/dist/sweetalert2.all.js"></script>
 <script src="<?php echo $absolute_include ?>resources/js/mostrar-datos-consulta.js"></script>
 
 <!--end-->

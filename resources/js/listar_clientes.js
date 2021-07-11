@@ -30,7 +30,6 @@ function listarClientes(){
 
             list += `<tr>
             <td>${element.turno}</td>
-            <td>${element.categoria}</td>
             <td>${element.descripcion}</td>`;
     
             /* if(primero == false){

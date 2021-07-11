@@ -7,7 +7,7 @@
             <div class="info">
                 <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                     <span>
-                        <div>Juan Carlos</div>
+                        <div><?php echo $_SESSION['nombre']; ?></div>
                         <span class="user-level text-success">Conectado</span>
                         <span class="caret"></span>
                     </span>
@@ -18,7 +18,7 @@
                     <ul class="nav">
                         <li>
                             <a>
-                                <span class="link-collapse">Horario de salida: 04:00</span>
+                                <span class="link-collapse">Horario de salida: <?php echo $_SESSION['horario']; ?></span>
                             </a>
                         </li>
                         <li>
@@ -27,7 +27,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#edit">
+                            <a href="<?php echo $absolute_include ?>logout">
                                 <span class="link-collapse">Cerrar sesion</span>
                             </a>
                         </li>
@@ -59,7 +59,7 @@
 
             <li class="nav-item">
                 <a href="<?php echo $absolute_include ?>empleado/lista">
-                    <i class="la la-male"></i>
+                    <i class="la la-list"></i>
                     <p>Lista de turnos hoy</p>
                     <!-- <span class="badge badge-count badge-success">3</span> -->
                 </a>
