@@ -12,19 +12,23 @@ async function actualizarLista(json){
     listado = "";
 
     json = json.content;
+    listado = '<div class="row">';
     json.cajas.map(element => {
 
         listado += `
-        <div class="form-group">
-            <div id="seccion-1">               
-                <strlong>Caja ${element.id}</strlong>
-                <h5>Turno: ${element.turno}</h5>
+        <div class="col-md-3">
+            <div class="form-group">
+                 <div id="seccion-${element.id}">               
+                    <strlong>Caja ${element.id}</strlong>
+                    <h5>Turno: ${element.turno}</h5>
+               </div>
             </div>
         </div>
         `;
         numActualizador += parseInt(element.turno);
 
     });
+    listado += '</div>';
 
     return listado
 }
@@ -32,9 +36,14 @@ async function actualizarLista(json){
 async function actualizarTurnos(){
     
     obtenerTurnos().then((json)=>{
-        actualizarLista(json).then((listado)=>{
-            divSecciones.innerHTML = listado;
-        });
+        if(json.state == "correcto"){
+            actualizarLista(json).then((listado)=>{
+                divSecciones.innerHTML = listado;
+            });
+        }else{
+            divSecciones.innerHTML = "<div>No estan atendiendo turnos ahora</div>";
+        }
+        
     });
 
 }

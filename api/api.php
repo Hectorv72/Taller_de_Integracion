@@ -25,7 +25,7 @@
         //Trae una consulta libre para atender
         else if($url[0] == 'consulta'){
             
-            print_r($api->getConsulta(date("Y-m-d",strtotime("-1 day")))); 
+            print_r($api->getConsulta(date("Y-m-d"))); 
         }
         else if($url[0] == 'cajas-libre'){
             print_r($api->getCajasLibre());

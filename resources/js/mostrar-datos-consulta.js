@@ -140,7 +140,7 @@ async function getDatosConsulta(){
             showAlert(json.content.id);
         },false)
 
-        if(json.content.isnow){
+        if(json.content.isahora){
             clearInterval(globalInterval);
             updateLastConsulta(json.content.turno);
             globalInterval = setInterval(function(){

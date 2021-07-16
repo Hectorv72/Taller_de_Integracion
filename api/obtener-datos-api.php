@@ -5,11 +5,15 @@
     Class Api extends ConexionDB{
         
         private function getDateNow(){
-            return date("Y-m-d",strtotime("-1 day"));
+            return date("Y-m-d");//
         }
 
         private function getHourNow(){
-            return date("H:i",strtotime("+15 minutes"));
+            return date("H:i",strtotime("+5 minutes"));
+        }
+
+        private function getHour(){
+            return date("H:i");
         }
 
 
@@ -63,6 +67,7 @@
 
                 $date = date_create($consulta['fecha']);
                 $isnow = $consulta['fecha'] == $this->getDateNow();
+                $ahora = $consulta['hora'] == $this->getHour();
 
                 $json = [ "state" => "correcto", "content" => [
                     'id'          => $consulta['id_consulta'],
@@ -70,6 +75,7 @@
                     'descripcion' => $consulta['descripcion'],
                     'fecha'       => date_format($date,"d-m-Y"),
                     'isnow'       => $isnow,
+                    'isahora'     => $ahora,
                     'hora'        => $consulta['hora'],
                     'turno'       => $consulta['nro_turno'],
                 ]];
@@ -104,10 +110,12 @@
                 $consulta = $this->select_table_all(['consultas'],"WHERE id_consulta = $idult ","element");
             }
             
-            
+            $time = $this->getHour();
+            $time = explode(":",$time);
+            $hora = $time[0];
             
             if($consulta == ""){
-                $consulta = $this->select_table_all(['consultas'],"WHERE fecha = '$fecha' AND estado = 0 ORDER BY nro_turno ASC ","element");
+                $consulta = $this->select_table_all(['consultas'],"WHERE fecha = '$fecha' AND estado = 0 AND hora LIKE '$hora%' ORDER BY nro_turno ASC ","element");
             }
             
             $id_caja = $_SESSION['nro_caja'];

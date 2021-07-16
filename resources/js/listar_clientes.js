@@ -1,14 +1,22 @@
 let tablaClientes = document.querySelector("#tabla-clientes > tbody");
-
+let numclientes = 0;
 let datalist = [];
 
-fetch("../api/clientes").then((response)=> response.json()).then(
-    (json) => {
-        //console.log(json);
-        datalist = json.content.clientes;
-        listarClientes();
-    }
-);
+
+
+function actualizarLista(){
+    fetch("../api/clientes").then((response)=> response.json()).then(
+        (json) => {
+            //console.log(json);
+            if(json.content.clientes.length != numclientes){
+                datalist = json.content.clientes;
+                numclientes = datalist.length;
+                listarClientes();
+            }
+            
+        }
+    );
+}
 
 /* function setAusente(id){
     datalist.splice(0, 1);
@@ -26,6 +34,7 @@ function listarClientes(){
     let primero = false; */
 
     if (datalist.length > 0){
+
         datalist.forEach(element => {
 
             list += `<tr>
@@ -70,3 +79,7 @@ socket.addEventListener('open', function (event) {
 socket.addEventListener('message', function (event) {
     console.log('Message from server', event.data);
 }); */
+
+actualizarLista();
+
+setInterval(actualizarLista,5000);

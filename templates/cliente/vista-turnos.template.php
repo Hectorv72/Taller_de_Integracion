@@ -23,7 +23,7 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<div class="card-title">Lista de turnos (fecha)</div>
+										<div class="card-title">Turnos en caja</div>
 									</div>
 
 
