@@ -4,6 +4,7 @@ RewriteEngine On
 # Reescribir al index
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+
 RewriteRule ^api/(.+?)/?$ api/api.php?url=$1 [L,QSA]
 
 RewriteRule ^empleado$ controladores/empleado/controller.empleado.php [L,QSA]
@@ -18,6 +19,9 @@ RewriteRule ^pagina-principal/login-user$ login/l.php [L,QSA]
 RewriteRule ^pagina-principal/register-user$ login/guardardatos.php [L,QSA]
 
 RewriteRule ^logout$ logout.php [L,QSA]
+
+RewriteRule ^loginuser$ controladores/usuario/controller.usuario.php?page=login [L,QSA]
+RewriteRule ^registeruser$ controladores/usuario/controller.usuario.php?page=register [L,QSA]
 
 RewriteRule ^empleado/(.+?)/?$ controladores/empleado/controller.empleado.php?page=$1 [L,QSA]
 RewriteRule ^cliente/(.+?)/?$  controladores/cliente/controller.cliente.php?page=$1 [L,QSA]

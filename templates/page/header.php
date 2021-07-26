@@ -10,4 +10,5 @@
 	<link rel="stylesheet" href="<?php echo $absolute_include ?>design/assets/css/ready.css">
 	<link rel="stylesheet" href="<?php echo $absolute_include ?>design/assets/css/demo.css">
 	<link rel="stylesheet" href="<?php echo $absolute_include ?>resources/sweetalert2/dist/sweetalert2.css">
+	<link rel="stylesheet" href="<?php echo $absolute_include ?>resources/css/user-style.css">
 </head>

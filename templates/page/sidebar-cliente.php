@@ -37,24 +37,24 @@
         </div>
         <ul class="nav">
 
-            <li class="nav-item">
+            <li class="nav-item <?php if($page == "home"){ echo "active"; } ?>"><!-- active -->
                 <a href="<?php echo $absolute_include ?>cliente/home">
-                    <i class="la la-home"></i>
-                    <p>Menu</p>
+                    <i class="la la-home "></i>
+                    <p class="">Menu</p>
                 </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item <?php if($page == "turno"){ echo "active"; } ?>">
                 <a href="<?php echo $absolute_include ?>cliente/turno">
-                    <i class="la la-male"></i>
+                    <i class="la la-male "></i>
                     <p>Mi Turno</p>
                     <!-- <span class="badge badge-count badge-success">3</span> -->
                 </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item <?php if($page == "vista-turnos"){ echo "active"; } ?>">
                 <a href="<?php echo $absolute_include ?>cliente/vista-turnos">
-                    <i class="la la-calendar-check-o"></i>
+                    <i class="la la-calendar-check-o "></i>
                     <p>Vista de turnos</p>
                     <!-- <span class="badge badge-count badge-success">3</span> -->
                 </a>

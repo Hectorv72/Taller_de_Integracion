@@ -1,22 +1,6 @@
 <?php
     session_start();
 
-    if(!isset($_SESSION['idusuario'])){
-        header("location: pagina-principal");
-    }
-
-    if(isset($_SESSION['idempleado'])){
-        header("location: empleado");
-    }
-
-    $session_nombre    = "UNNAMED";
-
-    $session_idusuario = $_SESSION['idusuario'];
-
-    if (isset($_SESSION['nombre'])){
-        $session_nombre = $_SESSION['nombre'];
-    }
-
     // seccion que permite resolver problemas de inclusion de archivos
     $carpeta_trabajo="";
     $seccion_trabajo="/controladores";
@@ -34,6 +18,30 @@
         $carpeta_trabajo = "/".$carpeta_trabajo;
     }
     // fin seccion
+
+
+    //---------------------------------------------------------------------------------------------
+    if(!isset($_SESSION['idusuario'])){
+        header("location: ".absoulte_include."pagina-principal");
+    }
+
+    if(isset($_SESSION['idempleado'])){
+        header("location: ".absoulte_include."empleado");
+    }
+
+    $session_nombre    = "UNNAMED";
+
+    $session_idusuario = $_SESSION['idusuario'];
+
+    if (isset($_SESSION['nombre'])){
+        $session_nombre = $_SESSION['nombre'];
+    }
+    //---------------------------------------------------------------------------------------------
+
+
+
+
+
 
     $page = "";
     $ruta = "";

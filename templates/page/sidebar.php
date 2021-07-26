@@ -42,14 +42,14 @@
         </div>
         <ul class="nav">
 
-            <li class="nav-item">
+            <li class="nav-item <?php if($page == "home"){ echo "active"; } ?>">
                 <a href="<?php echo $absolute_include ?>empleado/home">
                     <i class="la la-home"></i>
                     <p>Menu</p>
                 </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item <?php if($page == "atencion"){ echo "active"; } ?>">
                 <a href="<?php echo $absolute_include ?>empleado/atencion">
                     <i class="la la-male"></i>
                     <p>Atencion al cliente</p>
@@ -57,7 +57,7 @@
                 </a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item <?php if($page == "lista"){ echo "active"; } ?>">
                 <a href="<?php echo $absolute_include ?>empleado/lista">
                     <i class="la la-list"></i>
                     <p>Lista de turnos hoy</p>

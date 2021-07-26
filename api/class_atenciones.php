@@ -1,17 +1,23 @@
 <?php
+
+class Atenciones extends Api{
 //Continacion de la clase api
 
-    public function getAtenciones(){
+ /*    public function getAtenciones(){
 
-    }
+    } */
 
 
     
     //-------------------------------------------------------------------------------------------------
-    private function getAtencionEmpleadoId(){
+    private function getAtencionEmpleadoId($ss_idempleado = null){
 
-        $ss_idempleado = $_SESSION['idempleado'];
+        //$ss_idempleado = $_SESSION['idempleado'];
         $ss_nrocaja    = $_SESSION['nro_caja'];
+        
+        if($ss_idempleado == null){
+            $ss_idempleado = $_SESSION['idempleado'];
+        }
 
         $fecha = $this->fecha_local;
 
@@ -51,7 +57,9 @@
 
         $this->insert_table($array,"detalle_atencion");
 
-        $this->deleteConsulta($idconsulta);
+        $obj_consulta = new Consultas();
+
+        $obj_consulta->deleteConsulta($idconsulta);
 
         unset($_SESSION['ultima_consulta']);
 
@@ -60,6 +68,6 @@
         return $json;
     }
     //-------------------------------------------------------------------------------------------------
-
+}
 //Fin
 ?>

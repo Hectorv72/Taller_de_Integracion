@@ -18,7 +18,7 @@
 			<div class="main-panel">
 				<div class="content">
 					<div class="container-fluid">
-						<h4 class="page-title">Mi turno</h4>
+						<h4 class="page-title text-center">Mi turno</h4>
 						<div class="row">
 							<div class="col-md-12">
 								<div class="card">
@@ -30,7 +30,7 @@
 									<div class="card-body">
                                         <input type="hidden" id="usuario-id" value="<?php echo $session_idusuario ?>">
                                         <div id="datos-consulta-body">
-                                            
+											<h5>Cargando...</h5>
                                         </div>
 									</div>
 
@@ -65,7 +65,7 @@
     
 </body>
 <script src="<?php echo $absolute_include ?>resources/sweetalert2/dist/sweetalert2.all.js"></script>
-<script src="<?php echo $absolute_include ?>resources/js/mostrar-datos-consulta.js"></script>
+<script src="<?php echo $absolute_include ?>resources/js/cliente/datos_consulta.js"></script>
 
 <!--end-->
 <?php include($absolute_include."templates/page/end.php") ?>

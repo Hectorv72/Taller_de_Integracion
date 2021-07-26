@@ -18,20 +18,18 @@
 			<div class="main-panel">
 				<div class="content">
 					<div class="container-fluid">
-						<h4 class="page-title">Turnos</h4>
+						<h4 class="page-title text-center">Turnos</h4>
 						<div class="row">
 							<div class="col-md-12">
 								<div class="card">
-									<div class="card-header">
-										<div class="card-title">Turnos en caja</div>
-									</div>
 
-
+									
 									<div class="card-body">
 
                                         <div id="secciones">
-
+											<h5>Cargando...</h5>
                                         </div>
+
 									</div>
 
 

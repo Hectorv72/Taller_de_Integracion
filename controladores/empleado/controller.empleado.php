@@ -1,27 +1,6 @@
 <?php
+    //Sesion
     session_start();
-
-    $session_nombre   = "UNNAMED";
-    $session_nro_caja = 0;
-
-    if(!isset($_SESSION['idusuario'])){
-        header("location: pagina-principal");
-    }
-
-    if(!isset($_SESSION['idempleado'])){
-        header("location: cliente");
-    }
-    
-
-    if (isset($_SESSION['nombre'])){
-        $session_nombre = $_SESSION['nombre'];
-    }
-
-    if (isset($_SESSION['nro_caja'])){
-        $session_nro_caja = $_SESSION['nro_caja'];
-    }
-
-
 
     // seccion que permite resolver problemas de inclusion de archivos
     $carpeta_trabajo="";
@@ -43,12 +22,37 @@
     // fin seccion
 
 
+    //---------------------------------------------------------------------------------------------
+
+    $session_nombre   = "UNNAMED";
+    $session_nro_caja = 0;
+
+    if(!isset($_SESSION['idempleado'])){
+        header("location: ".$absolute_include."cliente");
+    }
+
+    if(!isset($_SESSION['idusuario'])){
+        header("location: ".$absolute_include."pagina-principal");
+    }
+    
+
+    if (isset($_SESSION['nombre'])){
+        $session_nombre = $_SESSION['nombre'];
+    }
+
+    if (isset($_SESSION['nro_caja'])){
+        $session_nro_caja = $_SESSION['nro_caja'];
+    }
+    //---------------------------------------------------------------------------------------------
+
+
     $page = "";
     $ruta = "";
 
     if (isset($_REQUEST['page'])){
         $page = $_REQUEST['page'];
     }
+
 
     if($page == "" or $page == "home"){
         $ruta = "templates/empleado/menu-empleado.template.php";
@@ -61,6 +65,8 @@
     }
     else if($page == "atencion"){
         $ruta = "templates/empleado/atencion-empleado.template.php";
+    }else{
+
     }
 
     $absolute_include = $GLOBALS['absolute_include'];

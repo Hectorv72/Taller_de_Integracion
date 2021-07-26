@@ -1,61 +1,51 @@
 <?php
     session_start();
     
-    include "../api/obtener-datos-api.php";
+    //include "../api/obtener-datos-api.php";
+    include_once "../database/conexion.php";
+    include_once "../api/class_api.php";
+    include_once "../api/class_usuarios.php";
+    include_once "../api/class_cajas.php";
+    include_once "../api/class_consultas.php";
+    include_once "../api/class_atenciones.php";
 
     //--------------GET---------------------\\
     if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
+        $get_url = $_GET['url'];
         $url = explode("/",$_GET['url']);
-        $api = new Api();
-        
-        //traer array de los clientes a atender
-        if($url[0] == 'clientes'){
+        //$api = new Api();
 
-            print_r($api->getClientes());
 
-        }
-        //Trae los turnos que las cajas estan atendiendo
-        else if($url[0] == 'turnos'){
+        switch ($get_url) {
+            case 'consultas':
+                //print_r(json_encode($api->getConsultas()));
+            break;
 
-            if(count($url)==1){
-                print_r($api->getTurnos());
-            }
-        }
-        //Trae una consulta libre para atender
-        else if($url[0] == 'consulta'){
-            
-            print_r($api->getConsulta(date("Y-m-d"))); 
-        }
-        else if($url[0] == 'cajas-libre'){
-            print_r($api->getCajasLibre());
-        }
-        else if($url[0] == 'ocupar-caja'){
-            $dato = $url[1];
-            print_r($api->setCajaLibre($dato));
+            case 'consulta/horario':
+                //print_r(json_encode($api->getConsultasHorario())); 
+            break;
 
-        }
-        else if($url[0] == "detalle-consulta"){
+            case 'consulta/usuario/'.$url[2]:
+                $iduser = $url[2];
+                //echo $iduser;
+                $obj_consultas = new Consultas();
+                print_r(json_encode($obj_consultas->getUsuarioConsulta($iduser)));
+            break;
 
-            if(count($url) == 2){
-                $iduser = $url[1];
-                print_r($api->getUsuarioConsulta($iduser));
-            }
-        
-        }
-        else if($url[0] == "consultas-anteriores"){
-            if(count($url) == 2){
-                print_r($api->getTurnosAnteriores($url[1]));
-            }
-        }
-        else if($url[0] == 'reset-sesion'){
-            $_SESSION['nro_caja'] = 0;
-            unset($_SESSION['ultima_consulta']);
-        }
-        else if($url[0] == "pedir-consulta"){
-            
-            $descripcion = "probamndo desde get";
-            print_r($api->pedirTurno($descripcion));
+            case 'consulta/turnos/'.$url[2]:
+                echo $url[2];
+                //print_r(json_encode($api->getTurnosAnteriores($url[1])));
+            break;
+
+            case 'cajas':
+                $obj_cajas = new Cajas();
+                print_r(json_encode($obj_cajas->getCajas()));
+            break;
+                
+            default:
+                print_r("nada");
+            break;
         }
 
     }
@@ -63,49 +53,63 @@
     //--------------POST---------------------\\
     else if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-        $url = explode("/",$_GET['url']);
-        $api = new Api();
+        $get_url = $_GET['url'];
+        $url = explode("/",$get_url);
+        //$api = new Api();
 
         $body = file_get_contents("php://input");
-        $decode = json_decode($body);
+        $post = json_decode($body);
 
-        //Realiza una consulta al servidor sobre la actualizacion de datos
-        if($url[0] == 'actualizacion'){
-            try{
-                if($url[1] == 'turnos'){
-                    $dato = $decode->dato;
-                    print_r($api->consultarActualizacionTurnos($dato));
-                }
-                else if($url[1] == 'cliente'){
-                    $id = $decode->idconsulta;
-                    print_r($api->consultarActualizacionCliente($id));
-                }
-            }catch(Exception $e){
-                print_r("error");
-            }
+        switch ($get_url) {
+
+            case 'actualizacion/turnos':
+                $dato = $post->dato;
+                print_r($api->consultarActualizacionTurnos($dato));
+            break;
+
+            case 'actualizacion/cliente':
+                $obj_consultas = new Consultas();
+                $id = $post->idconsulta;
+                print_r($obj_consultas->consultarActualizacionCliente($id));
+            break;
+
+            case 'consulta/estado':
+                $id     = $post->id;
+                $estado = $post->estado;
+                $nro_turno = $post->nroturno;
+                //print_r($api->setEstadoConsulta($id,$estado,$nro_turno));
+            break;
+
+            case 'consulta/agregar':
+
+                $obj_consultas = new Consultas();
+                $descripcion = $post->descripcion;
+                print_r(json_encode($obj_consultas->insertConsulta($descripcion)));
+            break;
             
-        }
-        else if($url[0] == "estado-consulta"){
-            $id     = $decode->id;
-            $estado = $decode->estado;
-            $nro_turno = $decode->nroturno;
-            print_r($api->setEstadoConsulta($id,$estado,$nro_turno));
-        }
-        else if($url[0] == 'ocupar-caja'){
-            $dato = $decode->caja;
+            case 'consulta/cancelar':
+
+                $obj_consultas = new Consultas();
+                $idcon = $post->consulta;
+                print_r(json_encode($obj_consultas->deleteConsulta($idcon)));
+            break;
+
+            case 'caja/usar':
+                $dato = $post->caja;
             
-            print_r($api->setCajaLibre($dato));
-        }
-        else if($url[0] == 'cancelar-consulta'){
-            $idcon = $decode->consulta;
+                //print_r($api->updateCaja($id,["estado" => '1'])));
+            break;
+
+            case 'usuario/login':
+                $obj_usuarios = new Usuarios();
+                $user = $post->user;
+                $pass = $post->pass;
+                print_r(json_encode($obj_usuarios->loginUsuario($user,$pass)));
+            break;
             
-            print_r($api->deleteConsulta($idcon));
-        }
-        else if($url[0] == "pedir-consulta"){
-            
-            $descripcion = $decode->descripcion;
-            
-            print_r($api->pedirTurno($descripcion));
+            default:
+                print_r(json_encode(["status"=>"error","message"=>"no existe esta instruccion"]));
+            break;
         }
     }
 

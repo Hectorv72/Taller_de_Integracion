@@ -8,49 +8,54 @@
 
         $url = explode("/",$_GET['url']);
         $api = new Api();
+        
+        //traer array de los clientes a atender
+        if($url[0] == 'clientes'){
 
-        switch($url[0]){
+            print_r($api->getClientes());
 
-            case 'consultas':
-                print_r(json_encode($api->getConsultas()));
-            break;
+        }
+        //Trae los turnos que las cajas estan atendiendo
+        else if($url[0] == 'turnos'){
+
+            if(count($url)==1){
+                print_r($api->getTurnos());
+            }
+        }
+        //Trae una consulta libre para atender
+        else if($url[0] == 'consulta'){
             
-            case 'consulta':
-                print_r($api->getConsulta(date("Y-m-d"))); 
-            break;
+            print_r($api->getConsulta(date("Y-m-d"))); 
+        }
+        else if($url[0] == 'cajas-libre'){
+            print_r($api->getCajasLibre());
+        }
+        else if($url[0] == 'ocupar-caja'){
+            $dato = $url[1];
+            print_r($api->setCajaLibre($dato));
 
-            case 'cajas-libre':
-                print_r($api->getCajasLibre());
-            break;
+        }
+        else if($url[0] == "detalle-consulta"){
 
-            case 'ocupar-caja':
-                $dato = $url[1];
-                print_r($api->setCajaLibre($dato));
-            break;
+            if(count($url) == 2){
+                $iduser = $url[1];
+                print_r($api->getUsuarioConsulta($iduser));
+            }
+        
+        }
+        else if($url[0] == "consultas-anteriores"){
+            if(count($url) == 2){
+                print_r($api->getTurnosAnteriores($url[1]));
+            }
+        }
+        else if($url[0] == 'reset-sesion'){
+            $_SESSION['nro_caja'] = 0;
+            unset($_SESSION['ultima_consulta']);
+        }
+        else if($url[0] == "pedir-consulta"){
             
-            case 'detalle-consulta'://usuario-consulta
-                if(count($url) == 2){
-                    $iduser = $url[1];
-                    print_r($api->getUsuarioConsulta($iduser));
-                }
-            break;
-
-            case 'consultas-anteriores':
-                if(count($url) == 2){
-                    print_r($api->getTurnosAnteriores($url[1]));
-                }
-            break;
-
-            case 'turnos':
-                if(count($url)==1){
-                    print_r($api->getTurnos());
-                }
-            break;
-
-            case 'pedir-consulta':
-                $descripcion = "probamndo desde get";
-                print_r($api->pedirTurno($descripcion));
-            break;
+            $descripcion = "probamndo desde get";
+            print_r($api->pedirTurno($descripcion));
         }
 
     }
@@ -101,6 +106,13 @@
             $descripcion = $decode->descripcion;
             
             print_r($api->pedirTurno($descripcion));
+        }
+        else if($url[0] == "pedir-consulta"){
+            
+            $user     = $decode->user;
+            $password = $decode->password;
+            
+            print_r($api->loginUsuario($user,$password));
         }
     }
 

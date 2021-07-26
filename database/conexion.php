@@ -3,12 +3,12 @@
 	class ConexionDB{
 
 		//-------------------------Atributos------------------------------------------
-		private $db_conexion;
+		public $db_conexion;
 		public $user = "root";
 		public $pass = "";
 		public $host = "localhost";
 		public $db = "taller_de_integracion";
-		private $conexion;
+		public $conexion;
 		//----------------------------------------------------------------------------
 
 		public function __construct($user="root", $pass="", $host="localhost", $db=null){
@@ -67,7 +67,7 @@
 
 		//Retorna un valor dependiendo del parametro
 		//----------------------------------------------------------------------------
-		private function retornar_tipo($tipo_retorno){
+		public function retornar_tipo($tipo_retorno){
 			if($tipo_retorno == "array"){
 				//Array de los elementos del registro
 				$array = array();

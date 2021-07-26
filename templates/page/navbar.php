@@ -1,5 +1,6 @@
 <div class="logo-header">
-	<a href="index.html" class="logo">
+	<a class="logo text-success">
+		<i class="la la-check"></i>
 		Banco Graciela
 	</a>
 	<button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">

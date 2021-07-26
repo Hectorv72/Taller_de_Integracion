@@ -2174,7 +2174,7 @@ body {
   font-weight: 700;
 }
 .sidebar .nav .nav-item.active a:before {
-  background: #1d7af3;
+  background: #28a745;
   opacity: 1 !important;
   position: absolute;
   z-index: 1;
@@ -2185,7 +2185,7 @@ body {
   top: 0;
 }
 .sidebar .nav .nav-item.active:hover a:before {
-  background: #1d7af3;
+  background: #28a745;
   opacity: 1 !important;
   position: absolute;
   z-index: 1;
@@ -2195,9 +2195,15 @@ body {
   left: 0;
   top: 0;
 }
-.sidebar .nav .nav-item.active a i {
-  color: #4d7cfe;
+.sidebar .nav .nav-item.active a i, .sidebar .nav .nav-item.active a p {
+  color: #28a745;/* #28a745; */
 }
+
+.sidebar .nav .nav-item a:hover i, .sidebar .nav .nav-item a:hover p {
+  transition: 0.3s;
+  color: white; /* #28a745; *//* #28a745; */
+}
+
 .sidebar .nav .nav-item a {
   display: flex;
   align-items: center;
@@ -2211,10 +2217,11 @@ body {
 }
 .sidebar .nav .nav-item a:hover, .sidebar .nav .nav-item a:focus {
   text-decoration: none;
-  background: #fbfbfb;
+  transition: 0.3s;
+  background: #28a745;
 }
-.sidebar .nav .nav-item:hover a:before {
-  background: #1d7af3;
+/* .sidebar .nav .nav-item:hover a:before {
+  background: #28a745;
   opacity: 0.7;
   position: absolute;
   z-index: 1;
@@ -2223,7 +2230,7 @@ body {
   content: '';
   left: 0;
   top: 0;
-}
+} */
 .sidebar .nav .nav-item a i {
   font-size: 23px;
   color: #C3C5CA;
