@@ -14,19 +14,14 @@ function actualizarLista(json){
         if(element.turno != 0){
 
             listado += `
-            <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
-                <div class="form-group">
-                    <div style="padding-top:20px;" class="form-control" id="seccion-${element.id}">  
-                        <div class="text-center">
-                            <strlong>Caja ${element.id}</strlong>
-                        </div>
-                        <hr>
-                        <div class="form-group text-center">             
-                            <h5>Turno: ${element.turno}</h5>
-                        </div>
-                   </div>
+            <div class="col-sm-3 margin-bottom30 text-center">
+                <div class="fact-box">                        
+                    <h5>Caja ${element.id}</h5>
+                    <h4 class="text-success">Turno</h4>
+                    <h2>${element.turno}</h2>
+                    <span class="border-line"></span>
                 </div>
-            </div>
+            </div><!--fact cols-->
             `;
             numActualizador += parseInt(element.turno);
         }
@@ -47,7 +42,7 @@ async function actualizarTurnos(json){
 
 async function verificarActualizacion(){
 
-    const response = await fetch("../api/cajas");
+    const response = await fetch("./api/cajas");
     const json = await response.json();
 
     let cantTurnos = 0;

@@ -37,10 +37,10 @@
         </div>
         <ul class="nav">
 
-            <li class="nav-item <?php if($page == "home"){ echo "active"; } ?>"><!-- active -->
-                <a href="<?php echo $absolute_include ?>cliente/home">
+            <li class="nav-item <?php if($page == "inicio"){ echo "active"; } ?>"><!-- active -->
+                <a href="<?php echo $absolute_include ?>cliente/inicio">
                     <i class="la la-home "></i>
-                    <p class="">Menu</p>
+                    <p class="">Inicio</p>
                 </a>
             </li>
 

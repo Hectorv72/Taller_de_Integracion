@@ -50,7 +50,7 @@
         $page = $_REQUEST['page'];
     }
 
-    if($page == "" or $page == "home"){
+    if($page == "" or $page == "inicio"){
         $ruta = "templates/cliente/menu-cliente.template.php";
     }
     else if($page == "vista-turnos"){

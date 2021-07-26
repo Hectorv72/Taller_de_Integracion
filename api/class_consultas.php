@@ -200,15 +200,15 @@ class Consultas extends Api{
                     }
                     
                     if($time[0] < 8){
-                        $horacon = '8:00:00';
+                        $horacon = '08:00:00';
                     }
-                    else if($time[0] >= 12 and $time[0] < 14){
+                    /* else if($time[0] >= 12 and $time[0] < 14){
                         $horacon = '14:00:00';
-                    }
-                    else if($time[0] >= 19){
+                    } */
+                    else if($time[0] >= 12){
                         
                         $fechacon = date("Y-m-d",strtotime($ultconsulta['fecha']."+ 1 days"));
-                        $horacon = '18:00:00';
+                        $horacon = '08:00:00';
                     }
 
                 }
@@ -224,12 +224,12 @@ class Consultas extends Api{
                     }
                     
                     if($time[0] < 8){
-                        $horacon = '8:00:00';
+                        $horacon = '08:00:00';
                     }
-                    else if($time[0] >= 12 and $time[0] < 14){
+                    /* else if($time[0] >= 12 and $time[0] < 14){
                         $horacon = '14:00:00';
-                    }
-                    else if($time[0] >= 19){
+                    } */
+                    else if($time[0] >= 12){
                         
                         $fechacon = $this->getFechaAdicional("+ 1 days");
                         $horacon = '08:00:00';

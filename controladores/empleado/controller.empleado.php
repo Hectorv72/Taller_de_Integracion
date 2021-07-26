@@ -54,7 +54,7 @@
     }
 
 
-    if($page == "" or $page == "home"){
+    if($page == "" or $page == "inicio"){
         $ruta = "templates/empleado/menu-empleado.template.php";
     }
     else if($page == "lista"){

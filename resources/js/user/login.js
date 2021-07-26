@@ -32,7 +32,7 @@ function validateUser(){
 
 async function loginUser(usuario,password){
 
-    const response = await fetch("./api/usuario/login",{
+    const response = await fetch("../api/usuario/login",{
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -51,7 +51,7 @@ async function loginUser(usuario,password){
             <i class="la la-check"></i>
             Usuario logeado, redireccionando...
         `;
-        window.location.href = "./"+json.content.dir;
+        window.location.href = "../"+json.content.dir;
     }
     else if(json.state == "error"){
         alertLogin.className = "text-danger";
