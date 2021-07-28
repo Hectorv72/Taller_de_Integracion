@@ -16,20 +16,50 @@
 					<div class="card-body">
 						<h5 class="card-title text-center text-uppercase text-success">Registrarse</h5>
 						<form class="form-signin">
+
+
 							<div class="form-label-group">
-								<input type="text" id="inputUserame" class="form-control" placeholder="Username" required autofocus>
+								<input type="text" id="input-user" class="form-control" placeholder="Username" required autofocus>
 								<label for="inputUserame">Usuario</label>
+
+								<div class="form-label-alert">
+									<!-- <div id="alert-password" class="text-danger">
+										<i class="la la-exclamation-circle"></i>
+										Verifique la contraseña
+									</div> -->
+								</div>
 							</div>
 
 							<div class="form-label-group">
-								<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
+								<input type="email" id="input-email" class="form-control" placeholder="Email address" required>
 								<label for="inputEmail">Email</label>
+
+								<div class="form-label-alert">
+									<!-- <div id="alert-password" class="text-danger">
+										<i class="la la-exclamation-circle"></i>
+										Verifique la contraseña
+									</div> -->
+								</div>
 							</div>
 							
-							<hr>
+							<!-- <hr> -->
 
 							<div class="form-label-group">
-								<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+								<input type="password" id="input-password" class="form-control" placeholder="Password" required>
+
+								<div class="form-label-alert">
+									<!-- <div id="alert-password" class="text-danger">
+										<i class="la la-exclamation-circle"></i>
+										Verifique la contraseña
+									</div> -->
+								</div>
+
+								<label for="inputPassword">Contraseña</label>
+							</div>
+							
+							<div class="form-label-group">
+								<input type="password" id="input-confirm-password" class="form-control" placeholder="Password" required>
+								<label for="inputConfirmPassword">Confirmar contraseña</label>
 
 								<div class="form-label-alert">
 									<div id="alert-password" class="text-danger">
@@ -37,16 +67,9 @@
 										Verifique la contraseña
 									</div>
 								</div>
-
-								<label for="inputPassword">Contraseña</label>
-							</div>
-							
-							<div class="form-label-group">
-								<input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password" required>
-								<label for="inputConfirmPassword">Confirmar contraseña</label>
 							</div>
 
-							<button class="btn btn-lg btn-outline-success btn-block text-uppercase" type="submit">Registrarme</button>
+							<button id="button-register" class="btn btn-lg btn-outline-success btn-block text-uppercase">Registrarme</button>
 							<!-- <a class="d-block text-center mt-2 small" href="#">Sign In</a>
 							<hr class="my-4">
 							<button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
@@ -64,6 +87,8 @@
 	</div>
     
 </body>
+
+<script src="<?php echo $absolute_include; ?>resources/js/user/register.js "></script>
 
 <!--end-->
 <?php include($absolute_include."templates/page/end.php") ?>

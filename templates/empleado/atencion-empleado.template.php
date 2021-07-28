@@ -18,7 +18,7 @@
 			<div class="main-panel">
 				<div class="content">
 					<div class="container-fluid">
-						<h4 class="page-title">Atencion al cliente</h4>
+						<h4 class="page-title text-center">Atencion al cliente</h4>
 						<div class="row">
 							<div class="col-md-12">
 								<div class="card">
@@ -28,7 +28,7 @@
 
 
 									<div class="card-body">
-										<input type="hidden" id="session_nro_caja" value="<?php echo $session_nro_caja ?>">
+										<input type="hidden" id="session_nro_caja" value="<?php echo $_SESSION['nro_caja'] ?>">
 
                                         
 										<div id="datos-atencion">
@@ -66,6 +66,7 @@
 	</div>
     
 </body>
+<script src="<?php echo $absolute_include ?>resources/sweetalert2/dist/sweetalert2.all.js"></script>
 <script src="../resources/js/datos_cliente.js"></script>
 
 <!--end-->

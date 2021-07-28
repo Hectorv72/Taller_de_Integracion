@@ -7,7 +7,7 @@
             <div class="info">
                 <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="true">
                     <span>
-                        <div><?php echo $_SESSION['nombre']; ?></div>
+                        <div><?php echo $session_nombre; ?></div>
                         <span class="user-level text-success">Conectado</span>
                         <span class="caret"></span>
                     </span>

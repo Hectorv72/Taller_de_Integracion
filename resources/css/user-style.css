@@ -87,7 +87,7 @@ body {
 .form-label-alert{
   padding: 0 var(--input-padding-x);
   max-width: 400px;
-  height: 35px;
+  height: 20px;
   /* transition: all .1s ease-in-out; */
 }
 

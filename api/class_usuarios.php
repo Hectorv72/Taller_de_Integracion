@@ -40,8 +40,19 @@ class Usuarios extends Api{
             if($usuario != ""){
                 if($usuario['password_usuario'] == $pass){
 
-                    $_SESSION['idusuario'] = $usuario['id_usuario'];
-                    return $this->jsonConvert("correcto",["dir"=>"cliente"]);
+                    $_SESSION['idusuario']         = $usuario['id_usuario'];
+                    $_SESSION['nombre_usuario']    = $usuario['nombre_usuario'];
+                    $_SESSION['nombre_y_apellido'] = $usuario['nombre_y_apellido'];
+                    $id_usuario = $usuario['id_usuario'];
+
+                    $empleado = $this->ejecutar_consulta("SELECT * FROM `empleados` WHERE id_usuario = '$id_usuario' ","element");
+
+                    if($empleado != ""){
+                        $_SESSION['idempleado'] = $empleado['id_empleado'];
+                        return $this->jsonConvert("correcto",["dir"=>"empleado"]);
+                    }else{
+                        return $this->jsonConvert("correcto",["dir"=>"cliente"]);
+                    }
                 }else{
                     return $this->jsonConvert("error",["message"=>"Contraseña incorrecta"]);
                 }

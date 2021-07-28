@@ -6,6 +6,8 @@ class Consultas extends Api{
     //-------------------------------------------------------------------------------------------------
     public function getConsultas(){
 
+        $this->deleteConsultasViejas();
+
         $fecha = $this->fecha_local;
 
         $clientes = $this->select_table_all(['consultas'],"WHERE fecha = '$fecha' ORDER BY nro_turno ASC",'array');
@@ -29,6 +31,36 @@ class Consultas extends Api{
             }
 
             return $this->jsonConvert("correcto",["clientes" => $list]);
+        }else{
+            return $this->jsonConvert("error",["message" => "no hay consultas"]);
+        }
+    }
+    //-------------------------------------------------------------------------------------------------
+
+
+    //-------------------------------------------------------------------------------------------------
+    public function getConsulta($id){
+
+        $fecha = $this->fecha_local;
+
+        $consulta = $this->select_table_all(['consultas'],"WHERE id_consulta = $id ",'element');
+
+        
+        if( $consulta != "" ){
+            
+            if($consulta['descripcion'] == null){
+                $consulta['descripcion'] = "";
+            }
+
+            $list = [
+                'id'          => $consulta['id_consulta'],
+                'turno'       => $consulta['nro_turno'],
+                'descripcion' => $consulta['descripcion'],
+                'hora' => $consulta['hora']
+            ];
+            
+
+            return $this->jsonConvert("correcto",$list);
         }else{
             return $this->jsonConvert("error",["message" => "no hay consultas"]);
         }
@@ -60,7 +92,19 @@ class Consultas extends Api{
     //-------------------------------------------------------------------------------------------------
 
 
+
+    //-------------------------------------------------------------------------------------------------
+    public function deleteConsultasViejas(){
+
+        $fecha = $this->fecha_local;
+        $hora  = $this->hora_local;
+
+        $this->delete_table('consultas',"WHERE fecha < '$fecha' OR (fecha = '$fecha' AND hora < '$hora' ) ");
+        return true;
+    }
+    //-------------------------------------------------------------------------------------------------
     
+
 
     //-------------------------------------------------------------------------------------------------
     public function getConsultasHorario(){
@@ -68,15 +112,17 @@ class Consultas extends Api{
         $consulta = "";
         $fecha    = $this->fecha_local;
         $hora     = $this->hora_local;
+        $hora_max = $this->getHoraAdicional("+14 minutes");
         
         //Verifica si hay una consulta no atendida
+        
         if(isset($_SESSION['ultima_consulta'])){
             $idult = $_SESSION['ultima_consulta'];
             $consulta = $this->select_table_all(['consultas'],"WHERE id_consulta = $idult ","element");
         }
-        
+
         if($consulta == ""){
-            $consulta = $this->select_table_all(['consultas'],"WHERE fecha = '$fecha' AND estado = 0 AND hora = '$hora' ORDER BY nro_turno ASC ","element");
+            $consulta = $this->select_table_all(['consultas'],"WHERE fecha = '$fecha' AND estado = 0 AND hora >= '$hora' AND hora < '$hora_max' ORDER BY nro_turno ASC ","element");
         }
         
         //Trae el id de la caja que se asigno al seleccionar caja
@@ -98,12 +144,10 @@ class Consultas extends Api{
             
             $id_consulta = $consulta['id_consulta'];
             
-            $this->update_table(["nro_turno" => $consulta['nro_turno'], "habilitado" => "1" ],'cajas'," WHERE id_caja = $id_caja");
+            $this->update_table([ "nro_turno" => $consulta['nro_turno'] ],'cajas'," WHERE id_caja = $id_caja ");
             
-
             $this->updateConsulta($id_consulta,[ "estado" => '1' ]);
             
-
             //Guarda el id de la consulta para un posterior uso
             $_SESSION['ultima_consulta'] = $id_consulta;
             
@@ -195,9 +239,11 @@ class Consultas extends Api{
                     $horacon = $this->getHoraAdicional($ultconsulta['hora']."+15 minutes");
                     $time = explode(":",$horacon);
 
-                    if($this->hora_local > 19){
-                        $fechacon = date("Y-m-d",strtotime($ultconsulta['fecha']."+ 1 days"));
-                    }
+                    $time_local = explode(":",$this->hora_local);
+
+                    /* if($time_local[0] == 23){
+                        $fechacon = this->getFechaAdicional("+ 1 days");
+                    } */
                     
                     if($time[0] < 8){
                         $horacon = '08:00:00';
@@ -218,17 +264,16 @@ class Consultas extends Api{
 
                     $horacon  = $this->getHoraAdicional("+15 minutes");
                     $time = explode(":",$horacon);
-                    
-                    if($time[0] == 0){
-                        $fechacon = $this->getFechaAdicional("+ 1 days");
+
+                    $time_local = explode(":",$this->hora_local);
+
+                    if($time_local[0] == 23){
+                        $fechacon = this->getFechaAdicional("+ 1 days");
                     }
                     
                     if($time[0] < 8){
                         $horacon = '08:00:00';
                     }
-                    /* else if($time[0] >= 12 and $time[0] < 14){
-                        $horacon = '14:00:00';
-                    } */
                     else if($time[0] >= 12){
                         
                         $fechacon = $this->getFechaAdicional("+ 1 days");

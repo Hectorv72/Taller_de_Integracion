@@ -17,13 +17,22 @@
         //$api = new Api();
 
 
+
         switch ($get_url) {
             case 'consultas':
-                //print_r(json_encode($api->getConsultas()));
+                $obj_consultas = new Consultas();
+                print_r(json_encode($obj_consultas->getConsultas()));
+            break;
+
+            case 'consulta/numero/'.$url[2]:
+                $obj_consultas = new Consultas();
+                $id = $url[2];
+                print_r(json_encode($obj_consultas->getConsulta($id)));
             break;
 
             case 'consulta/horario':
-                //print_r(json_encode($api->getConsultasHorario())); 
+                $obj_consultas = new Consultas();
+                print_r(json_encode($obj_consultas->getConsultasHorario())); 
             break;
 
             case 'consulta/usuario/'.$url[2]:
@@ -62,22 +71,23 @@
 
         switch ($get_url) {
 
-            case 'actualizacion/turnos':
+            /* case 'actualizacion/turnos':
                 $dato = $post->dato;
                 print_r($api->consultarActualizacionTurnos($dato));
-            break;
+            break; */
 
-            case 'actualizacion/cliente':
+            /* case 'actualizacion/cliente':
                 $obj_consultas = new Consultas();
                 $id = $post->idconsulta;
                 print_r($obj_consultas->consultarActualizacionCliente($id));
-            break;
+            break; */
 
             case 'consulta/estado':
+                $obj_atenciones = new Atenciones();
                 $id     = $post->id;
                 $estado = $post->estado;
                 $nro_turno = $post->nroturno;
-                //print_r($api->setEstadoConsulta($id,$estado,$nro_turno));
+                print_r(json_encode($obj_atenciones->setAtencionConsulta($id,$estado,$nro_turno)));
             break;
 
             case 'consulta/agregar':
@@ -95,9 +105,10 @@
             break;
 
             case 'caja/usar':
-                $dato = $post->caja;
+                $id_caja   = $post->caja;
+                $obj_cajas = new Cajas();
             
-                //print_r($api->updateCaja($id,["estado" => '1'])));
+                print_r(json_encode($obj_cajas->selectCaja($id_caja)));
             break;
 
             case 'usuario/login':

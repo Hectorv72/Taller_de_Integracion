@@ -4,18 +4,15 @@ let datalist = [];
 
 
 
-function actualizarLista(){
-    fetch("../api/clientes").then((response)=> response.json()).then(
-        (json) => {
-            //console.log(json);
-            if(json.content.clientes.length != numclientes){
-                datalist = json.content.clientes;
-                numclientes = datalist.length;
-                listarClientes();
-            }
-            
-        }
-    );
+async function actualizarLista(){
+    const consulta = await fetch("../api/consultas");
+    const json = await consulta.json();
+
+    if(json.content.clientes.length != numclientes){
+        datalist = json.content.clientes;
+        numclientes = datalist.length;
+        listarClientes();
+    }
 }
 
 /* function setAusente(id){
@@ -37,9 +34,14 @@ function listarClientes(){
 
         datalist.forEach(element => {
 
+            let descripcion = "no hay descripcion";
+            if(element.descripcion != ""){
+                descripcion = element.descripcion;
+            }
+
             list += `<tr>
             <td>${element.turno}</td>
-            <td>${element.descripcion}</td>`;
+            <td>${descripcion}</td>`;
     
             /* if(primero == false){
                 list += `<td>

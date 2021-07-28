@@ -63,9 +63,8 @@ class Atenciones extends Api{
 
         unset($_SESSION['ultima_consulta']);
 
-        $json = $this->jsonConvert("correcto",[ "message" => "Atencion registrada" ]);
+        return $this->jsonConvert("correcto",[ "message" => "Atencion registrada" ]);
 
-        return $json;
     }
     //-------------------------------------------------------------------------------------------------
 }

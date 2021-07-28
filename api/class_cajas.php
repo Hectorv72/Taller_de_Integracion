@@ -27,7 +27,7 @@ class Cajas extends Api{
     //-------------------------------------------------------------------------------------------------
     public function getCaja($id){
         
-        $caja = $this->select_table_all(['cajas'],"WHERE id_caja = $caja","element");
+        $caja = $this->select_table_all(['cajas'],"WHERE id_caja = $id ","element");
         $list = [
             'turno'  => $caja['nro_turno'],
             'estado' => $caja['habilitado']
@@ -40,9 +40,31 @@ class Cajas extends Api{
     public function updateCaja($id,$array){
 
         $this->update_table($array,'cajas',"WHERE id_caja = $id ");
-        
+        return true;
     }
     //-------------------------------------------------------------------------------------------------
+
+    public function selectCaja($id){
+
+        if(isset($_SESSION['idempleado'])){
+
+            $caja = $this->select_table_all(['cajas'],"WHERE id_caja = $id AND habilitado = 0","element");
+    
+            if($caja != ""){
+    
+                $_SESSION['nro_caja'] = $id; 
+                $this->updateCaja($id,["habilitado" => '1']);
+
+                return $this->jsonConvert("correcto",["message" => "La caja se selecciono"]);
+            }else{
+                return $this->jsonConvert("error",["message" => "La caja ya esta ocupada"]);
+            }
+            
+        }else{
+            return $this->jsonConvert("error",["message" => "Debe ser un empleado para ejecutar esta accion"]);
+        }
+        
+    }
 
 }
 ?>

@@ -24,20 +24,27 @@
 
     //---------------------------------------------------------------------------------------------
 
-    $session_nombre   = "UNNAMED";
-    $session_nro_caja = 0;
-
     if(!isset($_SESSION['idempleado'])){
-        header("location: ".$absolute_include."cliente");
+        header("location: cliente");
     }
 
     if(!isset($_SESSION['idusuario'])){
-        header("location: ".$absolute_include."pagina-principal");
+        header("location: pagina-principal");
     }
     
 
-    if (isset($_SESSION['nombre'])){
-        $session_nombre = $_SESSION['nombre'];
+    $session_nombre    = "UNNAMED";
+    $session_nya       = "NN";
+    $session_nro_caja = 0;
+
+    $session_idusuario = $_SESSION['idusuario'];
+
+    if (isset($_SESSION['nombre_usuario'])){
+        $session_nombre = $_SESSION['nombre_usuario'];
+    }
+
+    if (isset($_SESSION['nombre_y_apellido'])){
+        $session_nya = $_SESSION['nombre_y_apellido'];
     }
 
     if (isset($_SESSION['nro_caja'])){
@@ -56,22 +63,28 @@
 
     if($page == "" or $page == "inicio"){
         $ruta = "templates/empleado/menu-empleado.template.php";
+        redirecionarPagina($ruta);
     }
     else if($page == "lista"){
         $ruta = "templates/empleado/lista-turnos.template.php";
+        redirecionarPagina($ruta);
     }
     else if($page == "turnos"){
         $ruta = "templates/cliente/vista-turnos.template.php";
+        redirecionarPagina($ruta);
     }
     else if($page == "atencion"){
         $ruta = "templates/empleado/atencion-empleado.template.php";
+        redirecionarPagina($ruta);
     }else{
-
+        header("location : index.php");
     }
 
-    $absolute_include = $GLOBALS['absolute_include'];
-    $carpeta_trabajo  = $GLOBALS['carpeta_trabajo'];
-
-    include($absolute_include.$ruta);
+    function redirecionarPagina($ruta){
+        $absolute_include = $GLOBALS['absolute_include'];
+        $carpeta_trabajo  = $GLOBALS['carpeta_trabajo'];
+    
+        include($absolute_include.$ruta);
+    }
 
 ?>
