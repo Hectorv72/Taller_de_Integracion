@@ -55,7 +55,7 @@ async function verificarActualizacion(){
                 actualizarTurnos(json);
             }
         }else{
-            divSecciones.innerHTML = "<div>No estan atendiendo turnos ahora</div>";
+            divSecciones.innerHTML = "<div class='text-center'>No estan atendiendo turnos ahora</div>";
         }
     }else{
         divSecciones.innerHTML = "<div>Error, recargue la pagina</div>";

@@ -34,8 +34,8 @@ async function pedirConsulta(){
 function setFormularioConsulta(){
     divDatosConsultaHead.innerHTML = `<div class="text-center">Pide un turno</div>`;
     divDatosConsultaBody.innerHTML = `
-        <div class="form-group row text-center">
-            <div class="form-group text-center col-lg-12">
+        <div class="form-group row text-center justify-content-center">
+            <div class="form-group text-center col-lg-6">
                 <textarea class="form-control text-center" cols="20" rows="5" id="textarea-descripcion" placeholder="añade una descripcion del inconveniente(opcional)"></textarea>
             </div>
             <div class="form-group col-md-12">

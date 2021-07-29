@@ -33,23 +33,7 @@
     }
     
 
-    $session_nombre    = "UNNAMED";
-    $session_nya       = "NN";
-    $session_nro_caja = 0;
-
-    $session_idusuario = $_SESSION['idusuario'];
-
-    if (isset($_SESSION['nombre_usuario'])){
-        $session_nombre = $_SESSION['nombre_usuario'];
-    }
-
-    if (isset($_SESSION['nombre_y_apellido'])){
-        $session_nya = $_SESSION['nombre_y_apellido'];
-    }
-
-    if (isset($_SESSION['nro_caja'])){
-        $session_nro_caja = $_SESSION['nro_caja'];
-    }
+    
     //---------------------------------------------------------------------------------------------
 
 
@@ -83,6 +67,28 @@
     function redirecionarPagina($ruta){
         $absolute_include = $GLOBALS['absolute_include'];
         $carpeta_trabajo  = $GLOBALS['carpeta_trabajo'];
+
+        $page = $GLOBALS['page'];
+
+        $session_nombre    = "UNNAMED";
+        $session_nya       = "NN";
+        $session_nro_caja = 0;
+
+        $session_idusuario = $_SESSION['idusuario'];
+
+        if (isset($_SESSION['nombre_usuario'])){
+            $session_nombre = $_SESSION['nombre_usuario'];
+        }
+
+        if (isset($_SESSION['nombre_y_apellido'])){
+            $session_nya = $_SESSION['nombre_y_apellido'];
+        }
+
+        if (isset($_SESSION['nro_caja'])){
+            $session_nro_caja = $_SESSION['nro_caja'];
+        }else{
+            $session_nro_caja = 0;
+        }
     
         include($absolute_include.$ruta);
     }

@@ -11,4 +11,5 @@
 	<link rel="stylesheet" href="<?php echo $absolute_include ?>design/assets/css/demo.css">
 	<link rel="stylesheet" href="<?php echo $absolute_include ?>resources/sweetalert2/dist/sweetalert2.css">
 	<link rel="stylesheet" href="<?php echo $absolute_include ?>resources/css/user-style.css">
+	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 </head>

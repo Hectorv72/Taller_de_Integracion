@@ -29,18 +29,7 @@
         header("location: pagina-principal");
     }
 
-    $session_nombre    = "UNNAMED";
-    $session_nya       = "NN";
-
-    $session_idusuario = $_SESSION['idusuario'];
-
-    if (isset($_SESSION['nombre_usuario'])){
-        $session_nombre = $_SESSION['nombre_usuario'];
-    }
-
-    if (isset($_SESSION['nombre_y_apellido'])){
-        $session_nya = $_SESSION['nombre_y_apellido'];
-    }
+    
     //---------------------------------------------------------------------------------------------
 
 
@@ -74,6 +63,22 @@
     function redirecionarPagina($ruta){
         $absolute_include = $GLOBALS['absolute_include'];
         $carpeta_trabajo  = $GLOBALS['carpeta_trabajo'];
+
+        $session_nombre    = "UNNAMED";
+        $session_nya       = "NN";
+        $page = $GLOBALS['page'];
+
+        $session_idusuario = $_SESSION['idusuario'];
+
+        if (isset($_SESSION['nombre_usuario'])){
+            $session_nombre = $_SESSION['nombre_usuario'];
+        }
+
+        if (isset($_SESSION['nombre_y_apellido'])){
+            $session_nya = $_SESSION['nombre_y_apellido'];
+        }
+
+
     
         include($absolute_include.$ruta);
     }

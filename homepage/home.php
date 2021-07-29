@@ -33,6 +33,8 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link rel="shortcut icon" href="<?php echo $absolute_include ?>resources/logo.png">
         <title>Pagina principal</title>
 
         <!-- Bootstrap -->
@@ -72,7 +74,7 @@
                     <ul class="nav navbar-nav navbar-right scroll-to">
 
                         <li class="active"><a href="#home">Home</a></li>
-                        <li><a href="#services">Services</a></li>                  
+                        <li><a href="#services">Servicios</a></li>                  
                         <li><a href="#turnos">Turnos</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Usuario <span class="caret"></span></a>
@@ -108,7 +110,7 @@
 
                         <!-- LAYER NR. 3 -->
                         <div class="tp-caption slider-button scroll-to" data-x="center" data-y="center" data-voffset="120" data-speed="500" data-start="2400" data-easing="Power4.easeInOut" data-captionhidden="on">
-                            <a class="btn btn-white" href="#about">Registrarme</a>
+                            <a class="btn btn-white" href="<?php echo $absolute_include ?>pagina-principal/register">Registrarme</a>
                         </div> <!-- /tp-caption -->
 
                     </li>
@@ -116,7 +118,7 @@
                     <!-- SLIDE 2 -->
                     <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
                         <!-- MAIN IMAGE -->
-                        <img src="<?php echo $absolute_include ?>homepage/images/bg-3.jpg" alt="desk" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <img src="<?php echo $absolute_include ?>resources/banco.jpg" alt="desk" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
 
                         <!-- LAYERS -->
                         <!-- LAYER NR. 1 -->
@@ -131,7 +133,7 @@
 
                         <!-- LAYER NR. 3 -->
                         <div class="tp-caption slider-button scroll-to" data-x="center" data-y="center" data-voffset="120" data-speed="500" data-start="2400" data-easing="Power4.easeInOut" data-captionhidden="on">
-                            <a class="btn btn-white" href="#about">Iniciar Sesion</a>
+                            <a class="btn btn-white" href="<?php echo $absolute_include ?>pagina-principal/login">Iniciar Sesion</a>
                         </div> <!-- /tp-caption -->
                     </li>
                     <!-- SLIDE 3 -->
@@ -141,7 +143,7 @@
         </div><!--full width banner-->
 
 
-        <section id="services" class="section-padding">
+        <section id="" class="section-padding">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8 col-sm-offset-2 text-center">
@@ -201,7 +203,37 @@
                                 <i class="fas fa-address-card front-icon"></i>
                             </div>
                             <div class="features-text-right">
-                                <h3>Tarjeta</h3>                         
+                                <h3>Titulo</h3>                         
+                                <p>
+                                    Vivamus congue diam vitae tortor imperdiet congue. Nullam sagittis, tristique diam, ut ullamcorper tellus. Cras porttitor massa.
+                                </p>
+                            </div>
+                        </div>
+                    </div><!--services col-->
+                </div><!--services row-->
+
+
+                <div class="row">
+                    <div class="col-sm-6 margin-bottom30">
+                        <div class="feature-icon-wrap services-icons clearfix">
+                            <div class="left-side-icon">
+                                <i class="fas fa-address-card front-icon"></i>
+                            </div>
+                            <div class="features-text-right">
+                                <h3>Titulo</h3>                         
+                                <p>
+                                    Vivamus congue diam vitae tortor imperdiet congue. Nullam sagittis, tristique diam, ut ullamcorper tellus. Cras porttitor massa.
+                                </p>
+                            </div>
+                        </div>
+                    </div><!--services col-->
+                    <div class="col-sm-6 margin-bottom30">
+                        <div class="feature-icon-wrap services-icons clearfix">
+                            <div class="left-side-icon">
+                                <i class="fas fa-address-card front-icon"></i>
+                            </div>
+                            <div class="features-text-right">
+                                <h3>Titulo</h3>                         
                                 <p>
                                     Vivamus congue diam vitae tortor imperdiet congue. Nullam sagittis, tristique diam, ut ullamcorper tellus. Cras porttitor massa.
                                 </p>

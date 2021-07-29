@@ -127,26 +127,41 @@ async function obtenerTurnoLibre(){
 async function obtenerCajas(){
     const response = await fetch("../api/cajas");
     const json     = await response.json();
+    let cajas = [];
+
 
     if(json.state == "correcto"){
 
-        let list = "";
-
-        divAtencion.innerHTML = "";
-    
         json.content.cajas.forEach(element => {
             if (element.estado == "0"){
-                list += `<option value="${element.id}">Caja N°${element.id}</option>`;
+                cajas.push(element);
             }
         });
+
+        if(cajas.length > 0){
+
+            let list = "";
     
-        divAtencion.innerHTML += "<div class='form-group'><select class='form-control' id='select-caja'>"+list+"</select></div>";
-    
-        divAtencion.innerHTML += "<div class='form-group'><button class='btn btn-primary' id='boton-seleccionar-caja'>Seleccionar</button></div>";
-    
-        document.getElementById("boton-seleccionar-caja").addEventListener("click",function(){
-            setCaja();
-        },false);
+            divAtencion.innerHTML = "";
+        
+            cajas.forEach(element => {
+                if (element.estado == "0"){
+                    list += `<option value="${element.id}">Caja N°${element.id}</option>`;
+                }
+            });
+        
+            divAtencion.innerHTML += "<div class='form-group'><select class='form-control' id='select-caja'>"+list+"</select></div>";
+        
+            divAtencion.innerHTML += "<div class='form-group'><button class='btn btn-primary' id='boton-seleccionar-caja'>Seleccionar</button></div>";
+        
+            document.getElementById("boton-seleccionar-caja").addEventListener("click",function(){
+                setCaja();
+            },false);
+        }else{
+            divHead.innerHTML = "No hay cajas disponibles";
+            divAtencion.innerHTML = "";
+        }
+
     }else{
         divHead.innerHTML = "Ocurrio un error";
         divAtencion.innerHTML = "";

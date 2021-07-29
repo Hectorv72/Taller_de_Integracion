@@ -23,12 +23,13 @@
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
-										<div id="dato-turno" class="card-title h5"></div>
+									<button data-toggle="modal" data-target="#modalManual" class="btn btn-outline-info justify-content-center"><i class="fas fa-info"></i></button>
+										<div id="dato-turno" class="card-title h5 text-center"></div>
 									</div>
 
 
 									<div class="card-body">
-										<input type="hidden" id="session_nro_caja" value="<?php echo $_SESSION['nro_caja'] ?>">
+										<input type="hidden" id="session_nro_caja" value="<?php echo $session_nro_caja ?>">
 
                                         
 										<div id="datos-atencion">
@@ -56,6 +57,31 @@
 							</div>
 						</div>
 					</div>
+				</div>
+
+				<!-- Modal -->
+				<div class="modal fade" id="modalManual" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Guía de usuario</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							En esta seccion deberas elegir una caja a la cual estaras atendiendo.
+							<img class="img-fluid" src="<?php echo $absolute_include ?>resources/images/manual/atencion-cliente-1.png" alt="">
+							<hr>
+
+							Luego veras el turno que debes atender a la hora que tiene que llegar el cliente.
+							<img class="img-fluid" src="<?php echo $absolute_include ?>resources/images/manual/atencion-cliente-2.png" alt="">
+						</div>
+					<!-- <div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div> -->
+					</div>
+				</div>
 				</div>
 
 				<!--footer-->

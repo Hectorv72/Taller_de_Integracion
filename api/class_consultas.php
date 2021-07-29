@@ -126,7 +126,11 @@ class Consultas extends Api{
         }
         
         //Trae el id de la caja que se asigno al seleccionar caja
-        $id_caja = $_SESSION['nro_caja'];
+        if(isset($_SESSION['nro_caja'])){
+            $id_caja = $_SESSION['nro_caja'];
+        }else{
+            return $this->jsonConvert("error",[ "message" => "Seleccione una caja" ]);
+        }
         
         //Verifica si la consulta no devuelve un registro vacio
         if ($consulta != ""){
@@ -268,7 +272,7 @@ class Consultas extends Api{
                     $time_local = explode(":",$this->hora_local);
 
                     if($time_local[0] == 23){
-                        $fechacon = this->getFechaAdicional("+ 1 days");
+                        $fechacon = $this->getFechaAdicional("+ 1 days");
                     }
                     
                     if($time[0] < 8){

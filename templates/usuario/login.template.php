@@ -10,7 +10,10 @@
 
 					<div class="card-img-left d-none d-md-flex">
 						<!-- Background image for card set in CSS! -->
-						<div class="hover-background"><h1>Banco Graciela</h1></div>
+						<div class="hover-background justify-content-center">
+							<img src="<?php echo $absolute_include ?>resources/logo-white.png" width="200" class="img-fluid mx-auto d-block" alt="">	
+							<h3 class=" text-center font-weight-bold">Banco Graciela</h3>
+						</div>
 					</div>
 
 					<div class="card-body">
@@ -42,9 +45,11 @@
 							
 							
 							<button class="btn btn-lg btn-outline-success btn-block text-uppercase" type="submit" id="button-login">Iniciar sesion</button>
-							<!-- <a class="d-block text-center mt-2 small" href="#">Sign In</a>
-							<hr class="my-4">
-							<button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
+							
+							<a class="d-block text-center mt-2 small" href="<?php echo $absolute_include ?>pagina-principal">Volver al inicio</a>
+							<!-- <hr class="my-4"> -->
+
+							<!--<button class="btn btn-lg btn-google btn-block text-uppercase" type="submit"><i class="fab fa-google mr-2"></i> Sign up with Google</button>
 							<button class="btn btn-lg btn-facebook btn-block text-uppercase" type="submit"><i class="fab fa-facebook-f mr-2"></i> Sign up with Facebook</button> -->
 						</div>
 						<!-- </form> -->

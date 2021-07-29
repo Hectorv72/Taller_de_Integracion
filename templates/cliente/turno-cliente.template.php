@@ -18,11 +18,17 @@
 			<div class="main-panel">
 				<div class="content">
 					<div class="container-fluid">
+						
 						<h4 class="page-title text-center">Mi turno</h4>
+						
+
 						<div class="row">
 							<div class="col-md-12">
 								<div class="card">
 									<div class="card-header">
+										
+										<button data-toggle="modal" data-target="#modalManual" class="btn btn-outline-info justify-content-center"><i class="fas fa-info"></i></button>
+										
 										<div id="datos-consulta-head" class="card-title"></div>
 									</div>
 
@@ -55,6 +61,35 @@
 						</div>
 					</div>
 				</div>
+
+
+
+
+
+				
+				<!-- Modal -->
+				<div class="modal fade" id="modalManual" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Guía de usuario</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							En esta seccion podras pedir y ver la fecha de tu turno.
+							<img class="img-fluid" src="<?php echo $absolute_include ?>resources/images/manual/mi-turno-2.png" alt="">
+						</div>
+					<!-- <div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div> -->
+					</div>
+				</div>
+				</div>
+
+
+
 
 				<!--footer-->
                 <?php include($absolute_include."templates/page/footer.php"); ?>

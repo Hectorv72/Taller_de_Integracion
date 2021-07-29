@@ -4,7 +4,8 @@
 }
 
 ::selection{
-  color: #28a745;
+  color: white;
+  background: #28a745;
 }
 
 body {

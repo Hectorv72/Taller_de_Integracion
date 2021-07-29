@@ -16,11 +16,11 @@
 
                 <div class="collapse in" id="collapseExample" aria-expanded="true">
                     <ul class="nav">
-                        <li>
+                       <!--  <li>
                             <a>
                                 <span class="link-collapse">Horario de salida: <?php echo $_SESSION['horario']; ?></span>
                             </a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="#edit">
                                 <span class="link-collapse">Editar perfil</span>

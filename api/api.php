@@ -18,43 +18,52 @@
 
 
 
-        switch ($get_url) {
-            case 'consultas':
-                $obj_consultas = new Consultas();
-                print_r(json_encode($obj_consultas->getConsultas()));
-            break;
+        if(count($url) == 3){
 
-            case 'consulta/numero/'.$url[2]:
-                $obj_consultas = new Consultas();
-                $id = $url[2];
-                print_r(json_encode($obj_consultas->getConsulta($id)));
-            break;
-
-            case 'consulta/horario':
-                $obj_consultas = new Consultas();
-                print_r(json_encode($obj_consultas->getConsultasHorario())); 
-            break;
-
-            case 'consulta/usuario/'.$url[2]:
-                $iduser = $url[2];
-                //echo $iduser;
-                $obj_consultas = new Consultas();
-                print_r(json_encode($obj_consultas->getUsuarioConsulta($iduser)));
-            break;
-
-            case 'consulta/turnos/'.$url[2]:
-                echo $url[2];
-                //print_r(json_encode($api->getTurnosAnteriores($url[1])));
-            break;
-
-            case 'cajas':
-                $obj_cajas = new Cajas();
-                print_r(json_encode($obj_cajas->getCajas()));
-            break;
+            switch ($get_url){
+                case 'consulta/numero/'.$url[2]:
+                    $obj_consultas = new Consultas();
+                    $id = $url[2];
+                    print_r(json_encode($obj_consultas->getConsulta($id)));
+                break;
+    
+                case 'consulta/usuario/'.$url[2]:
+                    $iduser = $url[2];
+                    //echo $iduser;
+                    $obj_consultas = new Consultas();
+                    print_r(json_encode($obj_consultas->getUsuarioConsulta($iduser)));
+                break;
+    
+                case 'consulta/turnos/'.$url[2]:
+                    echo $url[2];
+                    //print_r(json_encode($api->getTurnosAnteriores($url[1])));
+                break;
                 
-            default:
-                print_r("nada");
-            break;
+                default:
+                    print_r("nada");
+                break;
+            }
+        }else{
+            switch ($get_url) {
+                case 'consultas':
+                    $obj_consultas = new Consultas();
+                    print_r(json_encode($obj_consultas->getConsultas()));
+                break;
+    
+                case 'consulta/horario':
+                    $obj_consultas = new Consultas();
+                    print_r(json_encode($obj_consultas->getConsultasHorario())); 
+                break;
+    
+                case 'cajas':
+                    $obj_cajas = new Cajas();
+                    print_r(json_encode($obj_cajas->getCajas()));
+                break;
+                    
+                default:
+                    print_r("nada");
+                break;
+            }
         }
 
     }
@@ -116,6 +125,18 @@
                 $user = $post->user;
                 $pass = $post->pass;
                 print_r(json_encode($obj_usuarios->loginUsuario($user,$pass)));
+            break;
+
+            case 'usuario/register':
+                $obj_usuarios = new Usuarios();
+
+                $array = [
+                    "apellido_y_nombre" => $post->nya,
+                    "nombre_usuario"    => $post->usuario,
+                    "email_usuario"     => $post->email,
+                    "password_usuario"  => $post->password,
+                ];
+                print_r(json_encode($obj_usuarios->registerUsuario($array)));
             break;
             
             default:
