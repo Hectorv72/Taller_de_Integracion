@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-07-2021 a las 17:38:07
+-- Tiempo de generación: 29-07-2021 a las 17:41:16
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.1
 
@@ -31,7 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `atenciones` (
   `id_atencion` int(5) NOT NULL,
   `fecha` date NOT NULL,
-  `id_empleado` int(5) NOT NULL
+  `id_empleado` int(5) NOT NULL,
+  `id_caja` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -51,8 +52,11 @@ CREATE TABLE `cajas` (
 --
 
 INSERT INTO `cajas` (`id_caja`, `nro_turno`, `habilitado`) VALUES
-(1, 0, 1),
-(2, 0, 0);
+(1, 0, 0),
+(2, 0, 0),
+(3, 0, 0),
+(4, 0, 0),
+(5, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -65,10 +69,19 @@ CREATE TABLE `consultas` (
   `id_usuario` int(5) DEFAULT NULL,
   `descripcion` varchar(200) DEFAULT NULL,
   `fecha` date NOT NULL,
-  `hora` varchar(5) NOT NULL,
+  `hora` time NOT NULL,
   `nro_turno` int(5) NOT NULL,
   `estado` int(1) NOT NULL COMMENT '0: libre / 1: en atencion'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `consultas`
+--
+
+INSERT INTO `consultas` (`id_consulta`, `id_usuario`, `descripcion`, `fecha`, `hora`, `nro_turno`, `estado`) VALUES
+(117, NULL, NULL, '2021-07-29', '17:25:00', 1, 0),
+(118, NULL, NULL, '2021-07-29', '17:35:00', 2, 0),
+(119, NULL, NULL, '2021-07-29', '17:40:00', 3, 0);
 
 -- --------------------------------------------------------
 
@@ -100,7 +113,7 @@ CREATE TABLE `empleados` (
 --
 
 INSERT INTO `empleados` (`id_empleado`, `id_usuario`, `horario_salida`) VALUES
-(2, 3, '12:00');
+(4, 15, '12:00');
 
 -- --------------------------------------------------------
 
@@ -112,16 +125,16 @@ CREATE TABLE `usuarios` (
   `id_usuario` int(5) NOT NULL,
   `apellido_y_nombre` varchar(60) NOT NULL,
   `nombre_usuario` varchar(30) NOT NULL,
-  `usu_password` varchar(60) NOT NULL,
-  `email` varchar(30) NOT NULL
+  `password_usuario` varchar(35) NOT NULL COMMENT 'MD5',
+  `email_usuario` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuario`, `apellido_y_nombre`, `nombre_usuario`, `usu_password`, `email`) VALUES
-(3, 'Hector Valdez', 'Hect123', '123456', 'Hectorvaldez@gmail.com');
+INSERT INTO `usuarios` (`id_usuario`, `apellido_y_nombre`, `nombre_usuario`, `password_usuario`, `email_usuario`) VALUES
+(15, 'hector valdez', 'Hector72', 'a048a2484d87449cda512e88699213be', 'Hectorvaldezfsa@gmail.com');
 
 --
 -- Índices para tablas volcadas
@@ -132,7 +145,8 @@ INSERT INTO `usuarios` (`id_usuario`, `apellido_y_nombre`, `nombre_usuario`, `us
 --
 ALTER TABLE `atenciones`
   ADD PRIMARY KEY (`id_atencion`),
-  ADD KEY `empleado` (`id_empleado`) USING BTREE;
+  ADD KEY `empleado` (`id_empleado`) USING BTREE,
+  ADD KEY `fkcajas` (`id_caja`);
 
 --
 -- Indices de la tabla `cajas`
@@ -175,7 +189,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `atenciones`
 --
 ALTER TABLE `atenciones`
-  MODIFY `id_atencion` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_atencion` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `cajas`
@@ -187,25 +201,25 @@ ALTER TABLE `cajas`
 -- AUTO_INCREMENT de la tabla `consultas`
 --
 ALTER TABLE `consultas`
-  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_atencion`
 --
 ALTER TABLE `detalle_atencion`
-  MODIFY `id_detalle_atencion` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_detalle_atencion` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  MODIFY `id_empleado` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_empleado` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_usuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas
@@ -215,6 +229,7 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `atenciones`
 --
 ALTER TABLE `atenciones`
+  ADD CONSTRAINT `fkcajas` FOREIGN KEY (`id_caja`) REFERENCES `cajas` (`id_caja`),
   ADD CONSTRAINT `fkempleado` FOREIGN KEY (`id_empleado`) REFERENCES `empleados` (`id_empleado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
